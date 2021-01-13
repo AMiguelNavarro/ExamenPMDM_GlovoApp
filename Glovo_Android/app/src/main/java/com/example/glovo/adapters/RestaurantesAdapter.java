@@ -1,4 +1,4 @@
-package com.example.glovo.adapter;
+package com.example.glovo.adapters;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -36,7 +36,7 @@ public class RestaurantesAdapter extends RecyclerView.Adapter<RestaurantesAdapte
     @Override
     public RestaurantesViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
-        View vista = LayoutInflater.from(parent.getContext()).inflate(R.layout.tarjeta_vista, parent, false);
+        View vista = LayoutInflater.from(parent.getContext()).inflate(R.layout.card_view_restaurantes, parent, false);
 
         return new RestaurantesViewHolder(vista);
 

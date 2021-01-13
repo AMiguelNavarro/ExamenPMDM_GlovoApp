@@ -5,12 +5,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 
-import com.example.glovo.adapter.RestaurantesAdapter;
-import com.example.glovo.beans.Restaurante;
-
-import java.util.ArrayList;
-
-public class MainActivity extends AppCompatActivity {
+public class listadoRestaurantes_vista extends AppCompatActivity {
 
     private RecyclerView recycler;
     private RecyclerView.Adapter adapter;
@@ -19,13 +14,13 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.recycler_view_restaurantes);
 
         // coger el recycler y fijar tamaño
         recycler = findViewById(R.id.recycler);
         recycler.setHasFixedSize(true);
 
-//        adapter = new RestaurantesAdapter(listaRestaurantes); TODO adapter con la lista de los restaurantes traida del servlet
+//        adapter = new RestaurantesAdapter(listaRestaurantes); TODO adapter con la lista de los restaurantes traida del servletl
 //        recycler.setAdapter(adapter);
 
     }
