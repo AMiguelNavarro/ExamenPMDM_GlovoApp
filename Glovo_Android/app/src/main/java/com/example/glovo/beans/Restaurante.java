@@ -8,17 +8,20 @@ import java.util.ArrayList;
 
 public class Restaurante {
 
+    // Poner las etiquetas por las que me llegan los datos en JSON
+    private static final String ID_RESTAURANTE = "idRestaurante";
+    private static final String ID_CATEGORIA = "idCategoria";
+    private static final String NOMBRE = "nombre";
+    private static final String IMAGEN = "imagen";
+    private static final String DESCRIPCION = "descripcion";
+    private static final String NUMERO_VENTAS = "numVentas";
+
     private int idRestaurante, idCategoria, numVentas;
     private String nombre, imagen, descripción;
 
-    public Restaurante(int idRestaurante, int idCategoria, int numVentas, String nombre, String imagen, String descripción) {
-        this.idRestaurante = idRestaurante;
-        this.idCategoria = idCategoria;
-        this.numVentas = numVentas;
-        this.nombre = nombre;
-        this.imagen = imagen;
-        this.descripción = descripción;
-    }
+    public Restaurante() { /*CONSTRUCTOR VACIO */ }
+
+
 
     /* GETTERS AND SETTERS */ // CTRL + SHIFT + - --> para contraer todo de golpe
 
@@ -72,32 +75,33 @@ public class Restaurante {
 
 
 
-//    public static ArrayList<Restaurante> getArrayListFromJSON(JSONArray listaRestaurantes) {
-//        ArrayList<Restaurante> lstRestaurantes = null;
-//        try {
-//            if (lstRestaurantes != null && lstRestaurantes.length() > 0) {
-//                lstRestaurantes = new ArrayList<Restaurante>();
-//            }
-//
-//            // Se recorre la lista que llega por parámetro y se mete en un objeto Pelicula
-//            for (int i = 0; i < lstRestaurantes.length(); i++) {
-//                JSONObject json_data = lstRestaurantes.getJSONObject(i);
-//                Peliculas pelicula = new Peliculas();
-//
-//                pelicula.setId(json_data.getInt(ID));
-//                pelicula.setTitulo(json_data.getString(TITLE));
-//                pelicula.setSinopsis(json_data.getString(OVERVIEW));
-//                pelicula.setImage(json_data.getString(POSTER_PATH));
-//                pelicula.setVote_average(json_data.getString(VOTE_AVERAGE));
-//
-//
-//                lstRestaurantes.add(pelicula);
-//            }
-//        } catch (JSONException e) {
-//            e.printStackTrace();
-//        }
-//        return lstRestaurantes;
-//    }
+    public static ArrayList<Restaurante> getArrayListFromJSON(JSONArray listaRestaurantes) {
+        ArrayList<Restaurante> lstRestaurantes = null;
+        try {
+            if (listaRestaurantes != null && listaRestaurantes.length() > 0) {
+                lstRestaurantes = new ArrayList<Restaurante>();
+            }
+
+            // Se recorre la lista que llega por parámetro y se mete en un objeto Pelicula
+            for (int i = 0; i < listaRestaurantes.length(); i++) {
+                JSONObject json_data = listaRestaurantes.getJSONObject(i);
+                Restaurante restaurante = new Restaurante();
+
+                restaurante.setIdRestaurante(json_data.getInt(ID_RESTAURANTE));
+                restaurante.setIdCategoria(json_data.getInt(ID_CATEGORIA));
+                restaurante.setNombre(json_data.getString(NOMBRE));
+                restaurante.setDescripción(json_data.getString(DESCRIPCION));
+                restaurante.setImagen(json_data.getString(IMAGEN));
+                restaurante.setNumVentas(json_data.getInt(NUMERO_VENTAS));
+
+
+                lstRestaurantes.add(restaurante);
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return lstRestaurantes;
+    }
 
 
 }

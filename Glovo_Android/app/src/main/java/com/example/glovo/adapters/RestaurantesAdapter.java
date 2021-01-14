@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.glovo.R;
 import com.example.glovo.beans.Restaurante;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
@@ -55,7 +56,7 @@ public class RestaurantesAdapter extends RecyclerView.Adapter<RestaurantesAdapte
 
         holder.nombre.setText(restaurante.getNombre());
         holder.descripcion.setText(restaurante.getDescripción());
-        // TODO imagen
+        Picasso.get().load(restaurante.getImagen()).into(holder.imagen);
 
     }
 

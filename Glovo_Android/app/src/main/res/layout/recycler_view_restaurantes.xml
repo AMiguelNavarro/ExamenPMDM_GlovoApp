@@ -1,3 +1,37 @@
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/glovo"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".listadoRestaurantes.vista.ListadoRestaurantes"
+    android:orientation="vertical">
+
+
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:orientation="horizontal"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end">
+
+
+        <TextView
+            android:id="@+id/tvFiltro"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Seleccionar una categoría" />
+
+        <Spinner
+            android:id="@+id/spinnerFiltro"
+            android:padding="13dp"
+            android:layout_width="34dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+    </LinearLayout>
+
 <androidx.recyclerview.widget.RecyclerView
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/recycler"
@@ -5,3 +39,5 @@
     android:layout_height="match_parent"
     android:padding="3dp"
     android:scrollbars="vertical" />
+
+</LinearLayout>

@@ -13,6 +13,7 @@ import java.io.UnsupportedEncodingException;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
+import java.util.HashMap;
 import java.util.Map;
 
 public class Post {
@@ -175,7 +176,7 @@ public class Post {
         return     getRespuestaPostEnJson();
 
     }
-    public JSONArray getServerDataGet(String URL) {
+    public JSONArray getServerDataGet(HashMap<String, String> parametros, String URL) {
         conectaGet(URL);
         return     getRespuestaPostEnJson();
     }
