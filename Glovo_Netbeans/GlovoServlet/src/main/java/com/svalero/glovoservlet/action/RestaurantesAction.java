@@ -5,8 +5,10 @@
  */
 package com.svalero.glovoservlet.action;
 
+import com.svalero.glovoservlet.DAO.CategoriasDAO;
 import com.svalero.glovoservlet.interfaces.Action;
 import com.svalero.glovoservlet.DAO.RestaurantesDAO;
+import com.svalero.glovoservlet.modelos.Categoria;
 import com.svalero.glovoservlet.modelos.Restaurante;
 import java.util.ArrayList;
 import javax.servlet.http.HttpServletRequest;
@@ -30,6 +32,10 @@ public class RestaurantesAction implements Action {
             case "FIND_ALL":
                 cadenaDestino = findAll(request, response);
                 break;
+                
+            case "CATEGORIA":
+                cadenaDestino = filtroCategoria(request, response);
+                break;
             
         }               
         
@@ -45,5 +51,26 @@ public class RestaurantesAction implements Action {
         
         return Restaurante.toArrayJSon(listaRestaurantes);
     }        
+    
+    
+    public String filtroCategoria(HttpServletRequest request, HttpServletResponse response){
+        
+        
+        RestaurantesDAO restaurantesDAO = new RestaurantesDAO();
+        CategoriasDAO categoriasDAO = new CategoriasDAO();
+        Categoria categoria = new Categoria();
+        Restaurante restaurante = new Restaurante();
+        
+        String nombreCategoria = request.getParameter("CATEGORIA");
+        categoria.setCategoria(nombreCategoria);
+        
+        int idCategoria = categoriasDAO.findAll(categoria);
+        restaurante.setIdCategoria(idCategoria);
+        
+        ArrayList<Restaurante> listaRestaurantes = restaurantesDAO.findAll(restaurante);
+        
+        return Restaurante.toArrayJSon(listaRestaurantes);
+
+    }    
     
 }

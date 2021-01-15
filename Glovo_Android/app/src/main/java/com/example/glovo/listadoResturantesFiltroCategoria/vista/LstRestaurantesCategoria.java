@@ -1,4 +1,4 @@
-package com.example.glovo.listadoRestaurantes.vista;
+package com.example.glovo.listadoResturantesFiltroCategoria.vista;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -9,50 +9,48 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.example.glovo.R;
 import com.example.glovo.adapters.RestaurantesAdapter;
 import com.example.glovo.beans.Restaurante;
-import com.example.glovo.listadoRestaurantes.interfaces.ListadoRestaurantesContrato;
-import com.example.glovo.listadoRestaurantes.presenter.ListadoRestaurantesPresenter;
-import com.example.glovo.listadoResturantesFiltroCategoria.vista.LstRestaurantesCategoria;
-import com.example.glovo.listadoTop10.vista.listadoTop10Vista;
+import com.example.glovo.listadoRestaurantes.vista.ListadoRestaurantes;
+import com.example.glovo.listadoResturantesFiltroCategoria.interfaces.LstRestaurantesCategoriaContrato;
+import com.example.glovo.listadoResturantesFiltroCategoria.presenter.LstRestaurantesCategoriaPresenter;
 
 import java.util.ArrayList;
 
-public class ListadoRestaurantes extends AppCompatActivity implements ListadoRestaurantesContrato.Vista {
+public class LstRestaurantesCategoria extends AppCompatActivity implements LstRestaurantesCategoriaContrato.Vista {
 
     private RecyclerView recycler;
     private RecyclerView.Adapter adapter;
     private RecyclerView.LayoutManager layoutManager;
-    private ListadoRestaurantesPresenter listadoRestaurantesPresenter;
+    private LstRestaurantesCategoriaPresenter presenterCategoria;
     private Spinner spinner;
-    private String [] opcionesSpinner = {" ","VER TODAS", "Fast Food", "Americana", "China","Japonesa"};
-    private Button btnVentas, btnPuntuacion;
+    private String[] opcionesSpinner = {" ", "VER TODAS", "Fast Food", "Americana", "China", "Japonesa"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.recycler_view_restaurantes);
+        setContentView(R.layout.restaurante_filtrados_categoria);
 
-        // Instanciar al presenter
-        listadoRestaurantesPresenter = new ListadoRestaurantesPresenter( this);
-        listadoRestaurantesPresenter.getRestaurantes();
+        Intent datos = this.getIntent();
+        Bundle extra = datos.getExtras();
 
-        cargarBotones();
+        String categoria = String.valueOf(extra.getString("categoria"));
+        Toast.makeText(getBaseContext(), categoria, Toast.LENGTH_LONG).show(); // CORRECTO
+
+        presenterCategoria = new LstRestaurantesCategoriaPresenter(this);
+        presenterCategoria.getRestaurantesCategoria(categoria);
+
         cargarSpinner();
     }
-
-
 
 
     @Override
     public void listadoCorrecto(ArrayList<Restaurante> listaRestaurantes) {
 
-        // coger el recycler y fijar tamaño
         recycler = findViewById(R.id.recycler);
         recycler.setHasFixedSize(true);
 
@@ -68,17 +66,6 @@ public class ListadoRestaurantes extends AppCompatActivity implements ListadoRes
     public void listadoError(String error) {
         Toast.makeText(this, error, Toast.LENGTH_SHORT).show();
     }
-
-    public void getTop10(View v) {
-        Intent navegar = new Intent(getBaseContext(), listadoTop10Vista.class );
-        startActivity(navegar);
-    }
-
-    public void getMayorPuntuacion(View v) {
-
-    }
-
-
 
 
     public void cargarSpinner() {
@@ -105,7 +92,7 @@ public class ListadoRestaurantes extends AppCompatActivity implements ListadoRes
                 }
 
                 navegar = new Intent(getBaseContext(), LstRestaurantesCategoria.class);
-                navegar.putExtra("categoria",categoria);
+                navegar.putExtra("categoria", categoria);
 
                 startActivity(navegar);
 
@@ -120,9 +107,5 @@ public class ListadoRestaurantes extends AppCompatActivity implements ListadoRes
 
     }
 
-    private void cargarBotones() {
-        btnVentas = findViewById(R.id.btnVentas);
-        btnPuntuacion = findViewById(R.id.btnPuntuacion);
-    }
 
 }

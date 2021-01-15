@@ -1,13 +1,11 @@
-package com.example.glovo.listadoRestaurantes.interfaces;
+package com.example.glovo.listadoResturantesFiltroCategoria.interfaces;
 
 import com.example.glovo.beans.Restaurante;
+import com.example.glovo.listadoRestaurantes.interfaces.ListadoRestaurantesContrato;
 
 import java.util.ArrayList;
 
-/**
- * Métodos con los que se va a comunicar cada clase del patrón MVP para segmentarlo bien y evitar que otras clases puedan acceder a ellos
- */
-public interface ListadoRestaurantesContrato {
+public interface LstRestaurantesCategoriaContrato {
 
      interface Vista {
 
@@ -17,20 +15,22 @@ public interface ListadoRestaurantesContrato {
     }
 
      interface Presenter {
-        void getRestaurantes();
+        void getRestaurantesCategoria(String categoria);
     }
 
      interface Modelo {
 
+         void getRestaurantesCategoriaWS(OnLstRestaurantesListenerCategoria onLstRestaurantesListenerCategoria, String categoria);
+
         /**
          * Programación reactiva, le indica el camino de regreso
          */
-        interface OnLstRestaurantesListener {
+        interface OnLstRestaurantesListenerCategoria {
             void onCorrecto(ArrayList<Restaurante> listaRestaurantes);
             void onError(String error);
         }
 
-        void getRestaurantesWS(OnLstRestaurantesListener onLstRestaurantesListener);
+
     }
 
 }

@@ -23,6 +23,8 @@ public class RestaurantesDAO implements IDAO<Restaurante, Integer> {
     public RestaurantesDAO() {
         motorSql = ConnectionFactory.selectDb();
     }
+    
+    // TODO metodo que devuelva el id de la categoria seleccionada
 
     @Override
     public ArrayList<Restaurante> findAll(Restaurante beanRestaurante) {

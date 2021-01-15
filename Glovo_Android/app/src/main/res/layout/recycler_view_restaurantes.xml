@@ -1,7 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@color/glovo"
+    android:background="@color/glovoYellow"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -32,12 +33,36 @@
             android:layout_weight="1" />
     </LinearLayout>
 
-<androidx.recyclerview.widget.RecyclerView
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/recycler"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:padding="3dp"
-    android:scrollbars="vertical" />
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler"
+        android:layout_width="match_parent"
+        android:layout_height="653dp"
+        android:padding="3dp"
+        android:scrollbars="vertical" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btnVentas"
+            android:layout_width="194dp"
+            android:layout_height="match_parent"
+            android:background="@color/glovoGreen"
+            android:layout_marginRight="20dp"
+            android:onClick="getTop10"
+            android:text="Top 10 Ventas" />
+
+        <Button
+            android:id="@+id/btnPuntuacion"
+            android:layout_width="204dp"
+            android:layout_height="match_parent"
+            android:background="@color/glovoGreen"
+            android:onClick="getMayorPuntuacion"
+            android:text="Mayor puntuación" />
+
+    </LinearLayout>
+
 
 </LinearLayout>
