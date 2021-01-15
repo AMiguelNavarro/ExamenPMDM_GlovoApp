@@ -23,6 +23,7 @@ public class ListadoTop10Vista extends AppCompatActivity implements ListadoTop10
 
         presenter = new ListadoTop10Presenter(this);
         presenter.getTop10();
+        // TODO
 
     }
 
