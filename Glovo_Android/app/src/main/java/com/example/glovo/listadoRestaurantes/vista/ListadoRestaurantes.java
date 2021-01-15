@@ -69,7 +69,7 @@ public class ListadoRestaurantes extends AppCompatActivity implements ListadoRes
     }
 
     public void getTop10(View v) {
-        Intent navegar = new Intent(getBaseContext(), listadoTop10Vista.class );
+        Intent navegar = new Intent(getBaseContext(), ListadoTop10Vista.class );
         startActivity(navegar);
     }
 
