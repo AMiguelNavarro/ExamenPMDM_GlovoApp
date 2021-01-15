@@ -12,7 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.NoActionBar"
         android:usesCleartextTraffic="true">
-        <activity android:name=".listadoTop10.vista.listadoTop10Vista"></activity>
+        <activity android:name=".listadoTop10.vista.ListadoTop10Vista"></activity>
         <activity android:name=".listadoResturantesFiltroCategoria.vista.LstRestaurantesCategoria" />
         <activity android:name=".listadoRestaurantes.vista.ListadoRestaurantes"> <!-- com.example.com.svalero.glovo.MainActivity -->
             <intent-filter>

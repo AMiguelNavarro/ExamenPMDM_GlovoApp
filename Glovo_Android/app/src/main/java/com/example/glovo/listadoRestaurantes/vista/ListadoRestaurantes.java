@@ -19,7 +19,7 @@ import com.example.glovo.beans.Restaurante;
 import com.example.glovo.listadoRestaurantes.interfaces.ListadoRestaurantesContrato;
 import com.example.glovo.listadoRestaurantes.presenter.ListadoRestaurantesPresenter;
 import com.example.glovo.listadoResturantesFiltroCategoria.vista.LstRestaurantesCategoria;
-import com.example.glovo.listadoTop10.vista.listadoTop10Vista;
+import com.example.glovo.listadoTop10.vista.ListadoTop10Vista;
 
 import java.util.ArrayList;
 
@@ -70,7 +70,7 @@ public class ListadoRestaurantes extends AppCompatActivity implements ListadoRes
     }
 
     public void getTop10(View v) {
-        Intent navegar = new Intent(getBaseContext(), listadoTop10Vista.class );
+        Intent navegar = new Intent(getBaseContext(), ListadoTop10Vista.class );
         startActivity(navegar);
     }
 

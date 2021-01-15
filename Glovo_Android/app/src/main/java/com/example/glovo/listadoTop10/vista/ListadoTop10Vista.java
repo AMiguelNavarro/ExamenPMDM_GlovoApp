@@ -8,17 +8,22 @@ import android.widget.Toast;
 import com.example.glovo.R;
 import com.example.glovo.beans.Restaurante;
 import com.example.glovo.listadoTop10.interfaces.ListadoTop10Contrato;
+import com.example.glovo.listadoTop10.presenter.ListadoTop10Presenter;
 
 import java.util.ArrayList;
 
-public class listadoTop10Vista extends AppCompatActivity implements ListadoTop10Contrato.Vista {
+public class ListadoTop10Vista extends AppCompatActivity implements ListadoTop10Contrato.Vista {
+
+    private ListadoTop10Presenter presenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.restaurante_top10_recycler);
 
-        // TODO estructura mvp con consulta a la bd
+        presenter = new ListadoTop10Presenter(this);
+        presenter.getTop10();
+
     }
 
     @Override
