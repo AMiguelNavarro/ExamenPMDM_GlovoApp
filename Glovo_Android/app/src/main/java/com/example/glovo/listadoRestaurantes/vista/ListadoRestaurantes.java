@@ -19,7 +19,6 @@ import com.example.glovo.beans.Restaurante;
 import com.example.glovo.listadoRestaurantes.interfaces.ListadoRestaurantesContrato;
 import com.example.glovo.listadoRestaurantes.presenter.ListadoRestaurantesPresenter;
 import com.example.glovo.listadoResturantesFiltroCategoria.vista.LstRestaurantesCategoria;
-import com.example.glovo.listadoTop10.vista.listadoTop10Vista;
 
 import java.util.ArrayList;
 
