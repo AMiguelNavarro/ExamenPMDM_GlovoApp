@@ -56,6 +56,7 @@ public class RestaurantesAdapter extends RecyclerView.Adapter<RestaurantesAdapte
 
         holder.nombre.setText(restaurante.getNombre());
         holder.descripcion.setText(restaurante.getDescripción());
+        holder.numVentas.setText("Num Ventas: " + restaurante.getNumVentas());
         Picasso.get().load(restaurante.getImagen()).into(holder.imagen);
 
     }
@@ -69,7 +70,7 @@ public class RestaurantesAdapter extends RecyclerView.Adapter<RestaurantesAdapte
     public static class RestaurantesViewHolder extends RecyclerView.ViewHolder {
 
         public ImageView imagen;
-        public TextView nombre, descripcion;
+        public TextView nombre, descripcion, numVentas;
 
         /**
          * Constructor del viewHolder. Carga los datos del card view que se iran modificando
@@ -80,6 +81,7 @@ public class RestaurantesAdapter extends RecyclerView.Adapter<RestaurantesAdapte
             imagen = v.findViewById(R.id.imagen);
             nombre = v.findViewById(R.id.nombre);
             descripcion = v.findViewById(R.id.descripcion);
+            numVentas = v.findViewById(R.id.numVentas);
         }
     }
 

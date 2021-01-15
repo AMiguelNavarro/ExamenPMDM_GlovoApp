@@ -36,6 +36,10 @@ public class RestaurantesAction implements Action {
             case "CATEGORIA":
                 cadenaDestino = filtroCategoria(request, response);
                 break;
+               
+            case "TOP10":
+                cadenaDestino = findTop10(request, response);
+                break;
             
         }               
         
@@ -73,4 +77,11 @@ public class RestaurantesAction implements Action {
 
     }    
     
+    public String findTop10(HttpServletRequest request, HttpServletResponse response){
+        
+        RestaurantesDAO restaurantesDAO = new RestaurantesDAO();
+        ArrayList<Restaurante> listaTop10 = restaurantesDAO.findTop10();
+        
+        return Restaurante.toArrayJSon(listaTop10);
+    }
 }

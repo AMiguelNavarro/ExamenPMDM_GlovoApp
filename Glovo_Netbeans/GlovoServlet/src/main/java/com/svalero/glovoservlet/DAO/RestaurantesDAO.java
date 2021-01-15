@@ -17,6 +17,7 @@ public class RestaurantesDAO implements IDAO<Restaurante, Integer> {
     private final String SQL_ADD = "INSERT INTO restaurantes (Nombre, Imagen, Descripcion, NumVentas) VALUES ";
     private final String SQL_DELETE = "DELETE FROM restaurantes WHERE idRestaurante=";
     private final String SQL_UPDATE = "UPDATE restaurantes SET ";
+    private final String SQL_FIND_TOP10 = "SELECT * FROM restaurantes ORDER BY numVentas DESC LIMIT 10";
     
     private MotorSQL motorSql;
 
@@ -24,7 +25,40 @@ public class RestaurantesDAO implements IDAO<Restaurante, Integer> {
         motorSql = ConnectionFactory.selectDb();
     }
     
-    // TODO metodo que devuelva el id de la categoria seleccionada
+    
+    public ArrayList<Restaurante> findTop10() {
+        
+        ArrayList<Restaurante> listaTop10 = new ArrayList<>();
+        String sql= SQL_FIND_TOP10;
+        
+        try {
+            
+            motorSql.connect();
+            ResultSet rs = motorSql.executeQuery(sql);
+            
+            while (rs.next()) {
+                Restaurante restaurante = new Restaurante();
+
+                restaurante.setIdRestaurante(rs.getInt(1));
+                restaurante.setIdCategoria(rs.getInt(2));
+                restaurante.setNombre(rs.getString(3));
+                restaurante.setImagen(rs.getString(4));
+                restaurante.setDescripcion(rs.getString(5));
+                restaurante.setNumVentas(rs.getInt(6));
+
+                listaTop10.add(restaurante);
+
+            } 
+            
+            
+        } catch (SQLException e){
+            e.printStackTrace();
+        } finally {
+            motorSql.disconnect();
+        }
+         
+        return listaTop10;
+    }
 
     @Override
     public ArrayList<Restaurante> findAll(Restaurante beanRestaurante) {

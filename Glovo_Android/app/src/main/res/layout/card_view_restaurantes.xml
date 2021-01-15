@@ -38,6 +38,20 @@
             android:layout_below="@+id/nombre"
             android:layout_alignLeft="@+id/nombre" />
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="Small Text"
+            android:id="@+id/numVentas"
+            android:layout_below="@+id/descripcion"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:textColor="@color/white"
+            android:layout_marginTop="30dp"
+            android:layout_alignLeft="@+id/nombre" />
+
 
     </RelativeLayout>
+
 </androidx.cardview.widget.CardView>

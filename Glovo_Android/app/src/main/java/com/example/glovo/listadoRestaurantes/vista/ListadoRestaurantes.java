@@ -19,13 +19,13 @@ import com.example.glovo.beans.Restaurante;
 import com.example.glovo.listadoRestaurantes.interfaces.ListadoRestaurantesContrato;
 import com.example.glovo.listadoRestaurantes.presenter.ListadoRestaurantesPresenter;
 import com.example.glovo.listadoResturantesFiltroCategoria.vista.LstRestaurantesCategoria;
+import com.example.glovo.listadoTop10.vista.ListadoTop10Vista;
 
 import java.util.ArrayList;
 
 public class ListadoRestaurantes extends AppCompatActivity implements ListadoRestaurantesContrato.Vista {
 
     private RecyclerView recycler;
-    private RecyclerView.Adapter adapter;
     private RecyclerView.LayoutManager layoutManager;
     private ListadoRestaurantesPresenter listadoRestaurantesPresenter;
     private Spinner spinner;
