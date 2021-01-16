@@ -63,7 +63,7 @@
             android:layout_height="match_parent"
             android:background="@color/glovoGreen"
             android:onClick="getMayorPuntuacion"
-            android:text="Mayor puntuación" />
+            android:text="VER VALORACIONES" />
 
     </LinearLayout>
 

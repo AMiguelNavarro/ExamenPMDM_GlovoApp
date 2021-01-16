@@ -29,7 +29,7 @@ public class ListadoRestaurantes extends AppCompatActivity implements ListadoRes
     private RecyclerView.LayoutManager layoutManager;
     private ListadoRestaurantesPresenter listadoRestaurantesPresenter;
     private Spinner spinner;
-    private String [] opcionesSpinner = {" ","VER TODAS", "Fast Food", "Americana", "China","Japonesa"};
+    private String[] opcionesSpinner = {" ", "VER TODAS", "Fast Food", "Americana", "China", "Japonesa"};
     private Button btnVentas, btnPuntuacion;
 
     @Override
@@ -38,14 +38,12 @@ public class ListadoRestaurantes extends AppCompatActivity implements ListadoRes
         setContentView(R.layout.recycler_view_restaurantes);
 
         // Instanciar al presenter
-        listadoRestaurantesPresenter = new ListadoRestaurantesPresenter( this);
+        listadoRestaurantesPresenter = new ListadoRestaurantesPresenter(this);
         listadoRestaurantesPresenter.getRestaurantes();
 
         cargarBotones();
         cargarSpinner();
     }
-
-
 
 
     @Override
@@ -69,15 +67,13 @@ public class ListadoRestaurantes extends AppCompatActivity implements ListadoRes
     }
 
     public void getTop10(View v) {
-        Intent navegar = new Intent(getBaseContext(), ListadoTop10Vista.class );
+        Intent navegar = new Intent(getBaseContext(), ListadoTop10Vista.class);
         startActivity(navegar);
     }
 
     public void getMayorPuntuacion(View v) {
 
     }
-
-
 
 
     public void cargarSpinner() {
@@ -104,7 +100,7 @@ public class ListadoRestaurantes extends AppCompatActivity implements ListadoRes
                 }
 
                 navegar = new Intent(getBaseContext(), LstRestaurantesCategoria.class);
-                navegar.putExtra("categoria",categoria);
+                navegar.putExtra("categoria", categoria);
 
                 startActivity(navegar);
 

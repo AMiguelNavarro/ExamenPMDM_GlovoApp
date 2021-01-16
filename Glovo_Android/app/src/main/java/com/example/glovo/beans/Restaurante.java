@@ -17,7 +17,7 @@ public class Restaurante {
     private static final String NUMERO_VENTAS = "numVentas";
 
     private int idRestaurante, idCategoria, numVentas;
-    private String nombre, imagen, descripción;
+    private String nombre, imagen, descripcion;
 
     public Restaurante() { /*CONSTRUCTOR VACIO */ }
 
@@ -65,14 +65,13 @@ public class Restaurante {
         this.imagen = imagen;
     }
 
-    public String getDescripción() {
-        return descripción;
+    public String getDescripcion() {
+        return descripcion;
     }
 
-    public void setDescripción(String descripción) {
-        this.descripción = descripción;
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
     }
-
 
 
     public static ArrayList<Restaurante> getArrayListFromJSON(JSONArray listaRestaurantes) {
@@ -82,7 +81,7 @@ public class Restaurante {
                 lstRestaurantes = new ArrayList<Restaurante>();
             }
 
-            // Se recorre la lista que llega por parámetro y se mete en un objeto Pelicula
+            // Se recorre la lista que llega por parámetro y se mete en un objeto Restaurante
             for (int i = 0; i < listaRestaurantes.length(); i++) {
                 JSONObject json_data = listaRestaurantes.getJSONObject(i);
                 Restaurante restaurante = new Restaurante();
@@ -90,7 +89,7 @@ public class Restaurante {
                 restaurante.setIdRestaurante(json_data.getInt(ID_RESTAURANTE));
                 restaurante.setIdCategoria(json_data.getInt(ID_CATEGORIA));
                 restaurante.setNombre(json_data.getString(NOMBRE));
-                restaurante.setDescripción(json_data.getString(DESCRIPCION));
+                restaurante.setDescripcion(json_data.getString(DESCRIPCION));
                 restaurante.setImagen(json_data.getString(IMAGEN));
                 restaurante.setNumVentas(json_data.getInt(NUMERO_VENTAS));
 

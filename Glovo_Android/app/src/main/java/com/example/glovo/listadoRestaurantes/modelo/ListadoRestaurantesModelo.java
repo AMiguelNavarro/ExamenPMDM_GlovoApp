@@ -1,10 +1,13 @@
 package com.example.glovo.listadoRestaurantes.modelo;
 
 import android.os.AsyncTask;
+
 import com.example.glovo.beans.Restaurante;
 import com.example.glovo.listadoRestaurantes.interfaces.ListadoRestaurantesContrato;
 import com.example.glovo.utils.Post;
+
 import org.json.JSONArray;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -16,9 +19,6 @@ public class ListadoRestaurantesModelo implements ListadoRestaurantesContrato.Mo
     private ArrayList<Restaurante> listaRestaurantesArrayList;
     private OnLstRestaurantesListener onLstRestaurantesListener;
 
-
-//    public ListadoRestaurantesModelo() {
-//    }
 
     /**
      * Método que inicia la tarea en segundo plano

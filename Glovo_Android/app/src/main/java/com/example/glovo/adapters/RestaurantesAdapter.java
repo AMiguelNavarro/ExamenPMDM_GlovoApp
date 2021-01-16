@@ -55,7 +55,7 @@ public class RestaurantesAdapter extends RecyclerView.Adapter<RestaurantesAdapte
         Restaurante restaurante = listaRestaurantes.get(position);
 
         holder.nombre.setText(restaurante.getNombre());
-        holder.descripcion.setText(restaurante.getDescripción());
+        holder.descripcion.setText(restaurante.getDescripcion());
         holder.numVentas.setText("Num Ventas: " + restaurante.getNumVentas());
         Picasso.get().load(restaurante.getImagen()).into(holder.imagen);
 
@@ -78,9 +78,9 @@ public class RestaurantesAdapter extends RecyclerView.Adapter<RestaurantesAdapte
          */
         public RestaurantesViewHolder(View v) {
             super(v);
-            imagen = v.findViewById(R.id.imagen);
-            nombre = v.findViewById(R.id.nombre);
-            descripcion = v.findViewById(R.id.descripcion);
+            imagen = v.findViewById(R.id.imagenValoracion);
+            nombre = v.findViewById(R.id.nombreValoracion);
+            descripcion = v.findViewById(R.id.descripcionValoracion);
             numVentas = v.findViewById(R.id.numVentas);
         }
     }

@@ -29,27 +29,19 @@
             android:layout_alignParentTop="true"
             android:layout_marginLeft="10dp" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceSmall"
-            android:text="Small Text"
-            android:id="@+id/descripcionValoracion"
-            android:layout_below="@+id/nombreValoracion"
-            android:layout_alignLeft="@+id/nombreValoracion" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceSmall"
-            android:text="Small Text"
-            android:id="@+id/numVentas"
-            android:layout_below="@+id/descripcionValoracion"
-            android:textSize="22sp"
-            android:textStyle="bold"
-            android:textColor="@color/white"
+
+        <RatingBar
+            android:id="@+id/ratingBar"
+            android:layout_below="@+id/nombreValoracion"
             android:layout_marginTop="30dp"
-            android:layout_alignLeft="@+id/nombreValoracion" />
+            android:layout_toRightOf="@+id/imagenValoracion"
+            android:layout_marginLeft="10dp"
+            android:layout_width="wrap_content"
+            android:numStars="5"
+            android:rating="1"
+            android:layout_height="wrap_content"
+            style="@style/Widget.AppCompat.RatingBar.Indicator"/>
 
 
     </RelativeLayout>
