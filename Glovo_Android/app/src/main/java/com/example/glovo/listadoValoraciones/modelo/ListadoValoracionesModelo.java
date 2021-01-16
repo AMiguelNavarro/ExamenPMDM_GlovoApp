@@ -25,7 +25,7 @@ public class ListadoValoracionesModelo implements ListadoValoracionesContrato.Mo
         this.listener = listener;
 
         HashMap<String, String> param = new HashMap<>();
-        param.put("ACTION", "VALORACION.MEDIA");
+        param.put("ACTION", "VALORACION.FIND_ALL");
 
         TareaSegundoPlano hilo = new TareaSegundoPlano(param);
         hilo.execute(URL_SERVER);

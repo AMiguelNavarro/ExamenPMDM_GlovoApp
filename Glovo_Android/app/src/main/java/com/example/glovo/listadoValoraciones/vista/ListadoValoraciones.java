@@ -44,7 +44,8 @@ public class ListadoValoraciones extends AppCompatActivity implements ListadoVal
         layoutManager = new LinearLayoutManager(this);
         recycler.setLayoutManager(layoutManager);
 
-        // TODO instanciar adapter
+        ValoracionesAdapter adapter = new ValoracionesAdapter(listaValoraciones);
+        recycler.setAdapter(adapter);
 
     }
 
@@ -52,4 +53,5 @@ public class ListadoValoraciones extends AppCompatActivity implements ListadoVal
     public void listadoError(String error) {
         Toast.makeText(this, error, Toast.LENGTH_LONG).show();
     }
+
 }
