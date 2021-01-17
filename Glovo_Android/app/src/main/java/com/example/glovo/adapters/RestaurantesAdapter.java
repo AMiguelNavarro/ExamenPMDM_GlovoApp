@@ -1,5 +1,6 @@
 package com.example.glovo.adapters;
 
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,6 +10,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.glovo.FichaDescriptiva.FichaDescriptivaVista;
 import com.example.glovo.R;
 import com.example.glovo.beans.Restaurante;
 import com.squareup.picasso.Picasso;
@@ -21,6 +23,7 @@ public class RestaurantesAdapter extends RecyclerView.Adapter<RestaurantesAdapte
 
     /**
      * Constructor del adapter. Inicializa el arrayList que nos viene de la base de datos
+     *
      * @param listaRestaurante
      */
     public RestaurantesAdapter(ArrayList<Restaurante> listaRestaurante) {
@@ -29,6 +32,7 @@ public class RestaurantesAdapter extends RecyclerView.Adapter<RestaurantesAdapte
 
     /**
      * Crea la vista de cada tarjeta con el método inflate a partir de layout parent
+     *
      * @param parent
      * @param viewType
      * @return
@@ -46,6 +50,7 @@ public class RestaurantesAdapter extends RecyclerView.Adapter<RestaurantesAdapte
 
     /**
      * Añade los valores de la lista de restaurantes que viene en el arrayList
+     *
      * @param holder
      * @param position posición de la fila
      */
@@ -58,6 +63,22 @@ public class RestaurantesAdapter extends RecyclerView.Adapter<RestaurantesAdapte
         holder.descripcion.setText(restaurante.getDescripcion());
         holder.numVentas.setText("Num Ventas: " + restaurante.getNumVentas());
         Picasso.get().load(restaurante.getImagen()).into(holder.imagen);
+
+        /**
+         * Coge los datos del elemento pulsado y los manda a la vista de la ficha descriptiva
+         */
+        holder.itemView.setOnClickListener(v -> {
+
+            Intent navegar = new Intent(v.getContext(), FichaDescriptivaVista.class);
+
+            navegar.putExtra("nombre", restaurante.getNombre());
+            navegar.putExtra("descripcion", restaurante.getDescripcion());
+            navegar.putExtra("imagen", restaurante.getImagen());
+            navegar.putExtra("idRestaurante", restaurante.getIdRestaurante());
+
+            v.getContext().startActivity(navegar);
+
+        });
 
     }
 
@@ -74,6 +95,7 @@ public class RestaurantesAdapter extends RecyclerView.Adapter<RestaurantesAdapte
 
         /**
          * Constructor del viewHolder. Carga los datos del card view que se iran modificando
+         *
          * @param v
          */
         public RestaurantesViewHolder(View v) {

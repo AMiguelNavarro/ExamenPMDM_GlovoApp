@@ -5,6 +5,7 @@
  */
 package com.svalero.glovoservlet.controlador;
 
+import com.svalero.glovoservlet.action.MenusAction;
 import com.svalero.glovoservlet.action.RestaurantesAction;
 import com.svalero.glovoservlet.action.UsuariosAction;
 import com.svalero.glovoservlet.action.ValoracionesAction;
@@ -55,7 +56,11 @@ public class Controlador extends HttpServlet {
                 
             case "VALORACION":
                 out.print(new ValoracionesAction().execute(request, response));
-                break;              
+                break;
+                
+            case "MENU":
+                out.print(new MenusAction().execute(request, response));
+                break;
                 
             default:
                 break;
