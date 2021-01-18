@@ -42,7 +42,7 @@ public class ListadoMenusVista extends AppCompatActivity implements ListadoMenus
         recycler = findViewById(R.id.recyclerMenus);
         recycler.setHasFixedSize(true);
 
-        layoutManager = new GridLayoutManager(this, 3);
+        layoutManager = new GridLayoutManager(this, 2);
         recycler.setLayoutManager(layoutManager);
 
         MenusAdapter adapter = new MenusAdapter(listaMenus);
