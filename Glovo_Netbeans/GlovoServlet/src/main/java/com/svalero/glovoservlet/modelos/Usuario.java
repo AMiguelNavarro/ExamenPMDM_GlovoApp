@@ -16,18 +16,18 @@ import java.util.ArrayList;
 public class Usuario {
     
     private int idUsuario;
-    private String nombre, apellido, email, password, fechaRegistro;
+    private String nombre, apellido, email, usuario,password;
     
     public Usuario() {
     }
 
-    public Usuario(int idUsuario, String nombre, String apellido, String email, String password, String fechaRegistro) {
+    public Usuario(int idUsuario, String nombre, String apellido, String email,String usuario, String password) {
         this.idUsuario = idUsuario;
         this.nombre = nombre;
         this.apellido = apellido;
         this.email = email;
+        this.usuario = usuario;
         this.password = password;
-        this.fechaRegistro = fechaRegistro;
     }
 
     public int getIdUsuario() {
@@ -62,6 +62,14 @@ public class Usuario {
         this.email = email;
     }
 
+    public String getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(String usuario) {
+        this.usuario = usuario;
+    }
+    
     public String getPassword() {
         return password;
     }
@@ -70,17 +78,11 @@ public class Usuario {
         this.password = password;
     }
 
-    public String getFechaRegistro() {
-        return fechaRegistro;
-    }
 
-    public void setFechaRegistro(String fechaRegistro) {
-        this.fechaRegistro = fechaRegistro;
-    }
 
     @Override
     public String toString() {
-        return "Usuario{" + "idUsuario=" + idUsuario + ", nombre=" + nombre + ", apellido=" + apellido + ", email=" + email + ", password=" + password + ", fechaRegistro=" + fechaRegistro + '}';
+        return "Usuario{" + "idUsuario=" + idUsuario + ", nombre=" + nombre + ", apellido=" + apellido + ", email=" + email + ", password=" + password + "}";
     }
     
     public static String 

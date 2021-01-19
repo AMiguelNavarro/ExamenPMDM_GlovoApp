@@ -5,7 +5,10 @@
  */
 package com.svalero.glovoservlet.action;
 
+import com.svalero.glovoservlet.DAO.UsuariosDAO;
 import com.svalero.glovoservlet.interfaces.Action;
+import com.svalero.glovoservlet.modelos.Usuario;
+import java.util.ArrayList;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -17,7 +20,37 @@ public class UsuariosAction implements Action{
 
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) {
-        return "HOLA";
+        
+        String cadenaDestino = "";
+        String action = (String) request.getParameter("ACTION");
+        String [] arrayAction = action.split("\\.");
+        
+        switch(arrayAction[1]) {
+            
+            case "FIND":
+                cadenaDestino = validarUsuario(request, response);
+                break;
+            
+        }
+        
+        return cadenaDestino;
+    }
+    
+    public String validarUsuario(HttpServletRequest request, HttpServletResponse response){
+        
+        UsuariosDAO usuariosDAO = new UsuariosDAO();
+        
+        String usuario = request.getParameter("USUARIO");
+        String contrasena = request.getParameter("CONTRASENA");
+        
+        Usuario user = new Usuario();
+        user.setUsuario(usuario);
+        user.setPassword(contrasena);
+        
+        ArrayList<Usuario> listaUsuarios = usuariosDAO.validarUsuario(user);
+        
+        return Usuario.toArrayJSon(listaUsuarios);
+        
     }
     
 }

@@ -12,18 +12,19 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.NoActionBar"
         android:usesCleartextTraffic="true">
-        <activity android:name=".listadoMenus.vista.ListadoMenusVista" />
-        <activity android:name=".FichaDescriptiva.FichaDescriptivaVista" />
-        <activity android:name=".listadoValoraciones.vista.ListadoValoraciones" />
-        <activity android:name=".listadoTop10.vista.ListadoTop10Vista" />
-        <activity android:name=".listadoResturantesFiltroCategoria.vista.LstRestaurantesCategoria" />
-        <activity android:name=".listadoRestaurantes.vista.ListadoRestaurantes"> <!-- com.example.com.svalero.glovo.MainActivity -->
+        <activity android:name=".loginInicio.vista.LoginVista">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".listadoMenus.vista.ListadoMenusVista" />
+        <activity android:name=".FichaDescriptiva.FichaDescriptivaVista" />
+        <activity android:name=".listadoValoraciones.vista.ListadoValoraciones" />
+        <activity android:name=".listadoTop10.vista.ListadoTop10Vista" />
+        <activity android:name=".listadoResturantesFiltroCategoria.vista.LstRestaurantesCategoria" />
+        <activity android:name=".listadoRestaurantes.vista.ListadoRestaurantes"> <!-- com.example.com.svalero.glovo.MainActivity --></activity>
     </application>
 
 </manifest>
