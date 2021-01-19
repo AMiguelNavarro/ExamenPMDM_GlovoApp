@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/glovoYellow"
     android:gravity="center_vertical"
     android:orientation="vertical"
     android:layout_width="match_parent"
@@ -11,15 +11,16 @@
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="229dp"
-        android:layout_height="226dp"
+        android:layout_width="269dp"
+        android:layout_height="91dp"
         android:layout_gravity="center"
-        android:background="@drawable/logo_glovo"
-        tools:srcCompat="@drawable/logo_glovo" />
+        android:background="@drawable/glovo" />
 
     <EditText
         android:id="@+id/usuario"
         android:layout_marginTop="30dp"
+        android:textColorHint="@color/black"
+        android:textColor="@color/black"
         android:layout_width="294dp"
         android:layout_gravity="center"
         android:layout_height="wrap_content"
@@ -30,6 +31,8 @@
     <EditText
         android:id="@+id/contrasena"
         android:hint="Contraseña"
+        android:textColorHint="@color/black"
+        android:textColor="@color/black"
         android:layout_marginTop="15dp"
         android:layout_width="294dp"
         android:layout_gravity="center"
