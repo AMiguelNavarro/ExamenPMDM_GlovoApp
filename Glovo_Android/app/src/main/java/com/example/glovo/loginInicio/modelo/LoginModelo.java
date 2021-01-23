@@ -47,6 +47,7 @@ public class LoginModelo implements LoginInterfazContrato.Modelo {
 
             String url_seleccionada = strings[0];
             Post post = new Post();
+            boolean correcto;
 
             try {
                 JSONArray listaUsuariosJSON = post.getServerDataPost(parametros, url_seleccionada);
@@ -55,18 +56,23 @@ public class LoginModelo implements LoginInterfazContrato.Modelo {
                 e.printStackTrace();
             }
 
-            return true;
+            if (listaUsuarios != null) {
+                correcto = true;
+            } else {
+                correcto = false;
+            }
+
+
+            return correcto;
         }
 
         @Override
-        protected void onPostExecute(Boolean respuesta) {
+        protected void onPostExecute(Boolean correcto) {
 
-            if (respuesta) {
-                if (listaUsuarios != null) {
-                    listener.onUsuarioCorrecto(listaUsuarios);
-                } else {
-                    listener.onUsuarioIncorrecto("Usuario incorrecto");
-                }
+            if (correcto) {
+                listener.onUsuarioCorrecto(listaUsuarios);
+            } else {
+                listener.onUsuarioIncorrecto("Usuario incorrecto");
             }
 
         }
