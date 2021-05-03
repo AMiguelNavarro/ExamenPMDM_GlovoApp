@@ -1,5 +1,7 @@
 package com.example.glovo.loginInicio.presenter;
 
+import android.content.Context;
+
 import com.example.glovo.beans.Usuario;
 import com.example.glovo.loginInicio.interfaces.LoginInterfazContrato;
 import com.example.glovo.loginInicio.modelo.LoginModelo;
@@ -19,10 +21,10 @@ public class LoginPresenter implements LoginInterfazContrato.Presenter {
 
 
     @Override
-    public void validarUsuario(String usuario, String contrasena) {
-        modelo.validarUsuarioWS(new LoginInterfazContrato.Modelo.OnLoginListener() {
+    public void validarUsuario(Context context, String usuario, String contrasena) {
+        modelo.validarUsuarioWS(context, new LoginInterfazContrato.Modelo.OnLoginListener() {
             @Override
-            public void onUsuarioCorrecto(ArrayList<Usuario> datosUsuario) {
+            public void onUsuarioCorrecto(Usuario datosUsuario) {
                 vista.usuarioCorrecto(datosUsuario);
             }
 

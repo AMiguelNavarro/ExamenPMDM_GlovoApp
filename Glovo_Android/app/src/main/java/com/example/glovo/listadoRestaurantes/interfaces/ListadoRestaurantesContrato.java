@@ -1,5 +1,7 @@
 package com.example.glovo.listadoRestaurantes.interfaces;
 
+import android.content.Context;
+
 import com.example.glovo.beans.Restaurante;
 
 import java.util.ArrayList;
@@ -17,7 +19,7 @@ public interface ListadoRestaurantesContrato {
     }
 
      interface Presenter {
-        void getRestaurantes();
+        void getRestaurantes(Context context);
     }
 
      interface Modelo {
@@ -30,7 +32,7 @@ public interface ListadoRestaurantesContrato {
             void onError(String error);
         }
 
-        void getRestaurantesWS(OnLstRestaurantesListener onLstRestaurantesListener);
+        void getRestaurantesWS(Context context, OnLstRestaurantesListener onLstRestaurantesListener);
     }
 
 }

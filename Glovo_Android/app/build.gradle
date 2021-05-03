@@ -17,7 +17,15 @@ android {
     }
 
     buildTypes {
+
+        def STRING = "String"
+
+        debug {
+            buildConfigField STRING, "API_URL", '"http://192.168.0.18:8080"'
+        }
+
         release {
+            buildConfigField STRING, "API_URL", '"https://tuUrl.com"'
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
@@ -37,6 +45,14 @@ dependencies {
     implementation 'androidx.recyclerview:recyclerview:1.2.0-beta01'
     implementation 'com.squareup.picasso:picasso:2.71828'
     implementation 'androidx.vectordrawable:vectordrawable:1.2.0-alpha02'
+    implementation 'com.squareup.retrofit2:retrofit:2.3.0'
+    implementation 'com.google.code.gson:gson:2.8.2'
+    implementation 'com.squareup.retrofit2:converter-gson:2.3.0'
+    // Material Design
+    def material_version = "1.3.0"
+    implementation "com.google.android.material:material:$material_version"
+
+
     testImplementation 'junit:junit:4.+'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'

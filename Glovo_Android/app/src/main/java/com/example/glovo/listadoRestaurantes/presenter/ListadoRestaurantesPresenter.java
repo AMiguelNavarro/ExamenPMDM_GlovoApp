@@ -1,5 +1,7 @@
 package com.example.glovo.listadoRestaurantes.presenter;
 
+import android.content.Context;
+
 import com.example.glovo.beans.Restaurante;
 import com.example.glovo.listadoRestaurantes.interfaces.ListadoRestaurantesContrato;
 import com.example.glovo.listadoRestaurantes.modelo.ListadoRestaurantesModelo;
@@ -21,9 +23,9 @@ public class ListadoRestaurantesPresenter implements ListadoRestaurantesContrato
      * Como parámetro instancia la programación reactiva para poder darle al modelo el camino de regreso y comunicar con la vista dentro de esto métodos
      */
     @Override
-    public void getRestaurantes() {
+    public void getRestaurantes(Context context) {
 
-        modelo.getRestaurantesWS(new ListadoRestaurantesContrato.Modelo.OnLstRestaurantesListener() {
+        modelo.getRestaurantesWS(context, new ListadoRestaurantesContrato.Modelo.OnLstRestaurantesListener() {
 
             /**
              * Si es correcto devuelve la lista con los restaurantes que ha sacado de la BD

@@ -9,4 +9,13 @@
     <color name="white">#FFFFFFFF</color>
     <color name="glovoYellow">#ffc845</color>
     <color name="glovoGreen">#279989</color>
+
+
+    <color name="colorPrimary"> #279989 </color>
+    <color name="colorPrimaryDark"> #0097A7 </color>
+    <color name="colorAccent"> #FFC107 </color>
+    <color name="colorPrimaryText"> #212121 </color>
+    <color name="colorSecondaryText"> #757575 </color>
+    <color name="colorLightPrimary"> #B2EBF2 </color>
+    <color name="colorTextIcons"> #FFFFFF </color>
 </resources>

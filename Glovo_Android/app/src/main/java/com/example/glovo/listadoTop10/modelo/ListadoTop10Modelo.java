@@ -52,7 +52,7 @@ public class ListadoTop10Modelo implements ListadoTop10Contrato.Modelo {
 
                 JSONArray listaTop10JSON = post.getServerDataPost(parametros, urlSeleccionada);
 
-                listaTop10 = Restaurante.getArrayListFromJSON(listaTop10JSON);
+                //listaTop10 = Restaurante.getArrayListFromJSON(listaTop10JSON);
 
             } catch (Exception e) {
                 e.printStackTrace();

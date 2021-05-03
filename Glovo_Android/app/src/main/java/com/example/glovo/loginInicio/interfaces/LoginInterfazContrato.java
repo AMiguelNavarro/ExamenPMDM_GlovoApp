@@ -1,5 +1,7 @@
 package com.example.glovo.loginInicio.interfaces;
 
+import android.content.Context;
+
 import com.example.glovo.beans.Usuario;
 
 import java.util.ArrayList;
@@ -7,22 +9,22 @@ import java.util.ArrayList;
 public interface LoginInterfazContrato {
 
     interface Vista{
-        void usuarioCorrecto(ArrayList<Usuario> datosUsuario);
+        void usuarioCorrecto(Usuario datosUsuario);
         void usuarioIncorrecto(String error);
     }
 
     interface Presenter{
-        void validarUsuario(String usuario, String contrasena);
+        void validarUsuario(Context context, String usuario, String contrasena);
     }
 
     interface Modelo{
 
         interface OnLoginListener{
-            void onUsuarioCorrecto(ArrayList<Usuario> datosUsuario);
+            void onUsuarioCorrecto(Usuario datosUsuario);
             void onUsuarioIncorrecto(String error);
         }
 
-        void validarUsuarioWS(OnLoginListener listener, String usuario, String contrasena);
+        void validarUsuarioWS(Context context, OnLoginListener listener, String usuario, String contrasena);
 
     }
 

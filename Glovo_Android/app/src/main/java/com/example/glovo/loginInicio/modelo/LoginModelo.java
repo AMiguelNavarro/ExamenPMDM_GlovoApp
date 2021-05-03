@@ -1,81 +1,39 @@
 package com.example.glovo.loginInicio.modelo;
 
-import android.os.AsyncTask;
+import android.content.Context;
 
 import com.example.glovo.beans.Usuario;
 import com.example.glovo.loginInicio.interfaces.LoginInterfazContrato;
-import com.example.glovo.utils.Post;
+import com.example.glovo.retrofit.ApiClient;
 
-import org.json.JSONArray;
-
-import java.util.ArrayList;
-import java.util.HashMap;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class LoginModelo implements LoginInterfazContrato.Modelo {
 
-    private static final String URL_SERVER = "http://192.168.0.18:8080/GlovoServlet/Controlador";
-    private OnLoginListener listener;
-    private boolean validacion;
-    private ArrayList<Usuario> listaUsuarios;
-
 
     @Override
-    public void validarUsuarioWS(OnLoginListener listener, String usuario, String contrasena) {
-
-        this.listener = listener;
-
-        HashMap<String, String> param = new HashMap<>();
-        param.put("ACTION", "USUARIOS.FIND");
-        param.put("USUARIO", usuario);
-        param.put("CONTRASENA", contrasena);
-
-        TareaSegundoPlano hilo = new TareaSegundoPlano(param);
-        hilo.execute(URL_SERVER);
-
-    }
-
-    class TareaSegundoPlano extends AsyncTask<String, Integer, Boolean> {
-
-        private HashMap<String, String> parametros;
-
-        public TareaSegundoPlano(HashMap<String, String> parametros) {
-            this.parametros = parametros;
-        }
-
-        @Override
-        protected Boolean doInBackground(String... strings) {
-
-            String url_seleccionada = strings[0];
-            Post post = new Post();
-            boolean correcto;
-
-            try {
-                JSONArray listaUsuariosJSON = post.getServerDataPost(parametros, url_seleccionada);
-                listaUsuarios = Usuario.getArrayListFromJSON(listaUsuariosJSON);
-            } catch (Exception e) {
-                e.printStackTrace();
+    public void validarUsuarioWS(Context context, OnLoginListener listener, String usuario, String contrasena) {
+        ApiClient api = new ApiClient(context);
+        final Call<Usuario> peticion = api.getUsuario(usuario, contrasena);
+        peticion.enqueue(new Callback<Usuario>() {
+            @Override
+            public void onResponse(Call<Usuario> call, Response<Usuario> response) {
+                if (response != null && response.body() != null) {
+                    Usuario user = new Usuario();
+                    user.setUsuario(response.body().getUsuario());
+                    user.setIdUsuario(response.body().getIdUsuario());
+                    listener.onUsuarioCorrecto(user);
+                }
             }
 
-            if (listaUsuarios != null) {
-                correcto = true;
-            } else {
-                correcto = false;
-            }
-
-
-            return correcto;
-        }
-
-        @Override
-        protected void onPostExecute(Boolean correcto) {
-
-            if (correcto) {
-                listener.onUsuarioCorrecto(listaUsuarios);
-            } else {
+            @Override
+            public void onFailure(Call<Usuario> call, Throwable t) {
+                t.printStackTrace();
                 listener.onUsuarioIncorrecto("Usuario incorrecto");
             }
-
-        }
+        });
     }
 
 }
