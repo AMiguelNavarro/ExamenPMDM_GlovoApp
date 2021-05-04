@@ -1,5 +1,7 @@
 package com.example.glovo.listadoTop10.presenter;
 
+import android.content.Context;
+
 import com.example.glovo.beans.Restaurante;
 import com.example.glovo.listadoTop10.interfaces.ListadoTop10Contrato;
 import com.example.glovo.listadoTop10.modelo.ListadoTop10Modelo;
@@ -18,8 +20,8 @@ public class ListadoTop10Presenter implements ListadoTop10Contrato.Presenter {
 
 
     @Override
-    public void getTop10() {
-        modelo.getTop10WS(new ListadoTop10Contrato.Modelo.OnTop10Listener() {
+    public void getTop10(Context context) {
+        modelo.getTop10WS(context, new ListadoTop10Contrato.Modelo.OnTop10Listener() {
 
             @Override
             public void onCorrecto(ArrayList<Restaurante> listaRestaurantesTop10) {

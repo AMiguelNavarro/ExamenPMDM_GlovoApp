@@ -1,5 +1,6 @@
 package com.example.glovo.adapters;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -54,6 +55,7 @@ public class RestaurantesAdapter extends RecyclerView.Adapter<RestaurantesAdapte
      * @param holder
      * @param position posición de la fila
      */
+    @SuppressLint("SetTextI18n")
     @Override
     public void onBindViewHolder(@NonNull RestaurantesViewHolder holder, int position) {
 
@@ -61,7 +63,7 @@ public class RestaurantesAdapter extends RecyclerView.Adapter<RestaurantesAdapte
 
         holder.nombre.setText(restaurante.getNombre());
         holder.descripcion.setText(restaurante.getDescripcion());
-        holder.numVentas.setText("Num Ventas: " + restaurante.getNumVentas());
+        holder.numVentas.setText("Num ventas: " + restaurante.getNumVentas());
         Picasso.get().load(restaurante.getImagen()).into(holder.imagen);
 
         /**

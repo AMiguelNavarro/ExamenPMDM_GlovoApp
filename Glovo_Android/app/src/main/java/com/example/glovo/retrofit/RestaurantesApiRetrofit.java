@@ -14,4 +14,7 @@ public interface RestaurantesApiRetrofit {
     @GET("restaurantes")
     Call<List<Restaurante>> getRestaurantes();
 
+    @GET("restaurantes/top10")
+    Call<List<Restaurante>> getTop10();
+
 }

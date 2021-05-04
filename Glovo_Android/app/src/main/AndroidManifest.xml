@@ -23,9 +23,8 @@
         <activity android:name=".listadoMenus.vista.ListadoMenusVista" />
         <activity android:name=".FichaDescriptiva.FichaDescriptivaVista" />
         <activity android:name=".listadoValoraciones.vista.ListadoValoraciones" />
-        <activity android:name=".listadoTop10.vista.ListadoTop10Vista" />
         <activity android:name=".listadoResturantesFiltroCategoria.vista.LstRestaurantesCategoria" />
-        <activity android:name=".listadoRestaurantes.vista.ListadoRestaurantes"> <!-- com.example.com.svalero.glovo.MainActivity -->
+        <activity android:name=".HomeActivity"> <!-- com.example.com.svalero.glovo.MainActivity -->
         </activity>
     </application>
 

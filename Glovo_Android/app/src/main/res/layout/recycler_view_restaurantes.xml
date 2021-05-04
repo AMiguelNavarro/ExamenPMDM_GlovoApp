@@ -1,21 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/glovoYellow"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/layout_listado_restaurantes_vista"
-    tools:context=".listadoRestaurantes.vista.ListadoRestaurantes"
+    tools:context=".HomeActivity"
     android:orientation="vertical">
 
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
         android:gravity="right"
         android:layout_gravity="end"
         android:background="@color/glovoGreen"
+        android:id="@+id/top_navigation"
         android:orientation="horizontal">
 
 
@@ -36,36 +39,51 @@
             android:padding="13dp" />
     </LinearLayout>
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recycler"
-        android:layout_width="match_parent"
-        android:layout_height="653dp"
-        android:padding="3dp"
-        android:scrollbars="vertical" />
+<!--    Esto será un Linear layout y dentro se crea el fragment -->
 
     <LinearLayout
+        android:id="@+id/linear_layout_fragments"
+        android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="horizontal">
+        android:padding="3dp"
+        android:layout_below="@+id/top_navigation"
+        android:layout_above="@id/bottom_navigation_inicio"
+        android:scrollbars="vertical" />
 
-        <Button
-            android:id="@+id/btnVentas"
-            android:layout_width="194dp"
-            android:layout_height="match_parent"
-            android:background="@color/glovoGreen"
-            android:layout_marginRight="20dp"
-            android:onClick="getTop10"
-            android:text="Top 10 Ventas" />
+<!--hasta aqui -->
 
-        <Button
-            android:id="@+id/btnPuntuacion"
-            android:layout_width="204dp"
-            android:layout_height="match_parent"
-            android:background="@color/glovoGreen"
-            android:onClick="getValoraciones"
-            android:text="VER VALORACIONES" />
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_navigation_inicio"
+        style="@style/Widget.MaterialComponents.BottomNavigationView.Colored"
+        android:layout_alignParentBottom="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:menu="@menu/bottom_navigation_menu"/>
 
-    </LinearLayout>
+<!--    <LinearLayout-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent"-->
+<!--        android:orientation="horizontal">-->
+
+<!--        <Button-->
+<!--            android:id="@+id/btnVentas"-->
+<!--            android:layout_width="194dp"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:background="@color/glovoGreen"-->
+<!--            android:layout_marginRight="20dp"-->
+<!--            android:onClick="getTop10"-->
+<!--            android:text="Top 10 Ventas" />-->
+
+<!--        <Button-->
+<!--            android:id="@+id/btnPuntuacion"-->
+<!--            android:layout_width="204dp"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:background="@color/glovoGreen"-->
+<!--            android:onClick="getValoraciones"-->
+<!--            android:text="VER VALORACIONES" />-->
+
+<!--    </LinearLayout>-->
 
 
-</LinearLayout>
+</RelativeLayout>

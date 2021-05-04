@@ -15,7 +15,7 @@ import android.widget.Toast;
 import com.example.glovo.R;
 import com.example.glovo.adapters.RestaurantesAdapter;
 import com.example.glovo.beans.Restaurante;
-import com.example.glovo.listadoRestaurantes.vista.ListadoRestaurantes;
+import com.example.glovo.HomeActivity;
 import com.example.glovo.listadoResturantesFiltroCategoria.interfaces.LstRestaurantesCategoriaContrato;
 import com.example.glovo.listadoResturantesFiltroCategoria.presenter.LstRestaurantesCategoriaPresenter;
 
@@ -86,7 +86,7 @@ public class LstRestaurantesCategoria extends AppCompatActivity implements LstRe
                 }
 
                 if (categoria == "VER TODAS") {
-                    navegar = new Intent(getBaseContext(), ListadoRestaurantes.class);
+                    navegar = new Intent(getBaseContext(), HomeActivity.class);
                     startActivity(navegar);
                     return;
                 }

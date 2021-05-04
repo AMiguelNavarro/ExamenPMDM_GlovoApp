@@ -1,5 +1,7 @@
 package com.example.glovo.listadoTop10.interfaces;
 
+import android.content.Context;
+
 import com.example.glovo.beans.Restaurante;
 
 import java.util.ArrayList;
@@ -16,7 +18,7 @@ public interface ListadoTop10Contrato {
 
     interface Presenter {
 
-        void getTop10();
+        void getTop10(Context context);
 
     }
 
@@ -28,7 +30,7 @@ public interface ListadoTop10Contrato {
             void onError(String error);
         }
 
-        void getTop10WS(OnTop10Listener listener);
+        void getTop10WS(Context context, OnTop10Listener listener);
 
     }
 

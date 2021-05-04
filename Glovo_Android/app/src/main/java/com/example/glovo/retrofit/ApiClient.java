@@ -38,4 +38,9 @@ public class ApiClient {
         return service.getRestaurantes();
     }
 
+    public Call<List<Restaurante>> getTop10() {
+        RestaurantesApiRetrofit service = retrofit.create(RestaurantesApiRetrofit.class);
+        return service.getTop10();
+    }
+
 }

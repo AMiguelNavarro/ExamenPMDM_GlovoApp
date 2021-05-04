@@ -6,19 +6,15 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.LinearLayout;
-import android.widget.Toast;
 
 import com.example.glovo.R;
 import com.example.glovo.beans.Usuario;
-import com.example.glovo.listadoRestaurantes.vista.ListadoRestaurantes;
+import com.example.glovo.HomeActivity;
 import com.example.glovo.loginInicio.interfaces.LoginInterfazContrato;
 import com.example.glovo.loginInicio.presenter.LoginPresenter;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.textfield.TextInputEditText;
-
-import java.util.ArrayList;
 
 public class LoginVista extends AppCompatActivity implements LoginInterfazContrato.Vista {
 
@@ -65,7 +61,7 @@ public class LoginVista extends AppCompatActivity implements LoginInterfazContra
     @Override
     public void usuarioCorrecto(Usuario datosUsuario) {
 
-            Intent navegar = new Intent(getBaseContext(), ListadoRestaurantes.class);
+            Intent navegar = new Intent(getBaseContext(), HomeActivity.class);
             navegar.putExtra("idUsuario", datosUsuario.getIdUsuario());
             navegar.putExtra("usuario", datosUsuario.getUsuario());
             startActivity(navegar);

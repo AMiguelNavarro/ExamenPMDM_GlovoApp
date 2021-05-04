@@ -1,42 +1,37 @@
-package com.example.glovo.listadoRestaurantes.vista;
+package com.example.glovo;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.Toast;
 
-import com.example.glovo.R;
-import com.example.glovo.adapters.RestaurantesAdapter;
-import com.example.glovo.beans.Restaurante;
 import com.example.glovo.beans.Usuario;
-import com.example.glovo.listadoRestaurantes.interfaces.ListadoRestaurantesContrato;
-import com.example.glovo.listadoRestaurantes.presenter.ListadoRestaurantesPresenter;
+import com.example.glovo.listadoRestaurantes.vista.FragmentRestaurantesInicio;
 import com.example.glovo.listadoResturantesFiltroCategoria.vista.LstRestaurantesCategoria;
-import com.example.glovo.listadoTop10.vista.ListadoTop10Vista;
-import com.example.glovo.listadoValoraciones.vista.ListadoValoraciones;
+import com.example.glovo.listadoTop10.vista.FragmentRestaurantesTop10;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.snackbar.Snackbar;
 
-import java.util.ArrayList;
+public class HomeActivity extends AppCompatActivity {
 
-public class ListadoRestaurantes extends AppCompatActivity implements ListadoRestaurantesContrato.Vista {
-
-    private LinearLayout layout;
-    private RecyclerView recycler;
-    private RecyclerView.LayoutManager layoutManager;
-    private ListadoRestaurantesPresenter listadoRestaurantesPresenter;
+    private RelativeLayout layout;
     private Spinner spinner;
     private String[] opcionesSpinner = {" ", "VER TODAS", "Fast Food", "Americana", "China", "Japonesa"};
     private Button btnVentas, btnPuntuacion;
     private Usuario usuario = new Usuario();
+    private BottomNavigationView bottomNavigationView;
+    private FragmentManager fragmentManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,46 +44,67 @@ public class ListadoRestaurantes extends AppCompatActivity implements ListadoRes
         usuario.setNombre(extra.getString("usuario"));
         // DATOS DE USUARIO CORRECTOS
 
-        // Instanciar al presenter
-        listadoRestaurantesPresenter = new ListadoRestaurantesPresenter(this);
-        listadoRestaurantesPresenter.getRestaurantes(this);
-
-        cargarBotones();
+//        cargarBotones();
         cargarSpinner();
         layout = findViewById(R.id.layout_listado_restaurantes_vista);
 
-    }
+        bottomNavigationView = findViewById(R.id.bottom_navigation_inicio);
+        bottomNavigationView.setSelectedItemId(R.id.menu_nav1);
+        iniciarBottomNavigationView();
 
+        fragmentManager = getSupportFragmentManager();
 
-    @Override
-    public void listadoCorrecto(ArrayList<Restaurante> listaRestaurantes) {
-
-        // coger el recycler y fijar tamaño
-        recycler = findViewById(R.id.recycler);
-        recycler.setHasFixedSize(true);
-
-        layoutManager = new LinearLayoutManager(this);
-        recycler.setLayoutManager(layoutManager);
-
-        RestaurantesAdapter adapter = new RestaurantesAdapter(listaRestaurantes);
-        recycler.setAdapter(adapter);
+        showFragmentInicio();
 
     }
 
-    @Override
-    public void listadoError(String error) {
-        crearSnackbar(error);
+    private void iniciarBottomNavigationView() {
+
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+
+                switch (item.getItemId()) {
+                    case R.id.menu_nav1:
+                        showFragmentInicio();
+                        return true;
+
+                    case R.id.menu_nav2:
+                        showFragmentTop10();
+                        return true;
+
+                    case R.id.menu_nav3:
+                        showFragmentValoraciones();
+                        return true;
+                }
+
+                return false;
+            }
+        });
+
     }
 
-    public void getTop10(View v) {
-        Intent navegar = new Intent(getBaseContext(), ListadoTop10Vista.class);
-        startActivity(navegar);
+    private void showFragmentInicio() {
+        FragmentTransaction transaction = fragmentManager.beginTransaction();
+        FragmentRestaurantesInicio fragmentRestaurantesInicio = new FragmentRestaurantesInicio();
+        transaction.replace(R.id.linear_layout_fragments, fragmentRestaurantesInicio);
+        transaction.addToBackStack(null); // Para volver al fragment anterior
+        transaction.commit();
     }
 
-    public void getValoraciones(View v) {
-        Intent navegar = new Intent(getBaseContext(), ListadoValoraciones.class);
-        startActivity(navegar);
+    private void showFragmentTop10() {
+        FragmentTransaction transaction = fragmentManager.beginTransaction();
+        FragmentRestaurantesTop10 fragmentRestaurantesTop10 = new FragmentRestaurantesTop10();
+        transaction.replace(R.id.linear_layout_fragments, fragmentRestaurantesTop10);
+        transaction.addToBackStack(null); // Para volver al fragment anterior
+        transaction.commit();
     }
+
+
+    private void showFragmentValoraciones() {
+
+    }
+
 
 
     public void cargarSpinner() {
@@ -109,7 +125,7 @@ public class ListadoRestaurantes extends AppCompatActivity implements ListadoRes
                 }
 
                 if (categoria == "VER TODAS") {
-                    navegar = new Intent(getBaseContext(), ListadoRestaurantes.class);
+                    navegar = new Intent(getBaseContext(), HomeActivity.class);
                     startActivity(navegar);
                     return;
                 }
@@ -130,10 +146,6 @@ public class ListadoRestaurantes extends AppCompatActivity implements ListadoRes
 
     }
 
-    private void cargarBotones() {
-        btnVentas = findViewById(R.id.btnVentas);
-        btnPuntuacion = findViewById(R.id.btnPuntuacion);
-    }
 
 
     private void crearSnackbar(String mensaje) {
