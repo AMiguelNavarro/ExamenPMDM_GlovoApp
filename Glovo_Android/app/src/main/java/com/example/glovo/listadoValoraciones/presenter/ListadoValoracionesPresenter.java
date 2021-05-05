@@ -1,5 +1,7 @@
 package com.example.glovo.listadoValoraciones.presenter;
 
+import android.content.Context;
+
 import com.example.glovo.beans.Valoracion;
 import com.example.glovo.listadoValoraciones.interfaces.ListadoValoracionesContrato;
 import com.example.glovo.listadoValoraciones.modelo.ListadoValoracionesModelo;
@@ -18,8 +20,8 @@ public class ListadoValoracionesPresenter implements ListadoValoracionesContrato
     }
 
     @Override
-    public void getValoraciones() {
-        modelo.getValoracionesWS(new ListadoValoracionesContrato.Modelo.OnListenerValoracion() {
+    public void getValoraciones(Context context) {
+        modelo.getValoracionesWS(context, new ListadoValoracionesContrato.Modelo.OnListenerValoracion() {
             @Override
             public void onCorrecto(ArrayList<Valoracion> listaValoraciones) {
                 vistaContrato.listadoCorrecto(listaValoraciones);

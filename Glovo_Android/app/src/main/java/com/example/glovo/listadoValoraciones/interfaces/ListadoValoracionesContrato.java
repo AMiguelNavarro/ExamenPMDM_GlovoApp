@@ -1,5 +1,7 @@
 package com.example.glovo.listadoValoraciones.interfaces;
 
+import android.content.Context;
+
 import com.example.glovo.beans.Valoracion;
 
 import java.util.ArrayList;
@@ -12,7 +14,7 @@ public interface ListadoValoracionesContrato {
     }
 
     interface Presenter{
-        void getValoraciones();
+        void getValoraciones(Context context);
     }
 
     interface Modelo{
@@ -22,7 +24,7 @@ public interface ListadoValoracionesContrato {
             void onError(String error);
         }
 
-        void getValoracionesWS(OnListenerValoracion listener);
+        void getValoracionesWS(Context context, OnListenerValoracion listener);
 
     }
 

@@ -11,33 +11,42 @@
     android:orientation="vertical">
 
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
-        android:gravity="right"
-        android:layout_gravity="end"
         android:background="@color/glovoGreen"
-        android:id="@+id/top_navigation"
-        android:orientation="horizontal">
+        android:id="@+id/top_navigation">
 
 
         <TextView
             android:id="@+id/tvFiltro"
+            android:layout_centerVertical="true"
             android:layout_width="wrap_content"
-            android:gravity="center_vertical"
-            android:layout_height="match_parent"
-            android:paddingLeft="15dp"
-            android:text="CATEGORÍA"
+            android:layout_height="wrap_content"
+            android:paddingLeft="@dimen/home_activity_padding_usuario"
+            android:text="@string/home_activity_usuario"
             android:textColor="@color/white"
             android:textStyle="bold" />
 
+        <TextView
+            android:id="@+id/tv_nombre_usuario"
+            android:layout_centerVertical="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="6dp"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:textSize="@dimen/home_activity_tamaño_texto_usuario"
+            android:layout_toEndOf="@+id/tvFiltro"/>
+
         <Spinner
             android:id="@+id/spinnerFiltro"
+            android:layout_alignParentEnd="true"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:padding="13dp" />
-    </LinearLayout>
+    </RelativeLayout>
 
 <!--    Esto será un Linear layout y dentro se crea el fragment -->
 

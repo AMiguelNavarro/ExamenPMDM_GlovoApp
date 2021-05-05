@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="home_activity_padding_usuario">15dp</dimen>
+    <dimen name="home_activity_tamaño_texto_usuario">16sp</dimen>
+</resources>

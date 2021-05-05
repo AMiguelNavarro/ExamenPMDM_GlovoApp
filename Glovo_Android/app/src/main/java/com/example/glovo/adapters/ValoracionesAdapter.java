@@ -11,6 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.glovo.R;
+import com.example.glovo.beans.Restaurante;
 import com.example.glovo.beans.Valoracion;
 import com.squareup.picasso.Picasso;
 
@@ -40,9 +41,11 @@ public class ValoracionesAdapter extends RecyclerView.Adapter<ValoracionesAdapte
         Valoracion valoracion = listaValoraciones.get(position);
         float estrellasValoracion = (float) valoracion.getPuntuacion();
 
-        holder.nombre.setText(valoracion.getNombre());
+        Restaurante restaurante = valoracion.getRestaurante();
+
+        holder.nombre.setText(restaurante.getNombre());
         holder.ratingBar.setRating(estrellasValoracion);
-        Picasso.get().load(valoracion.getImagen()).into(holder.imagen);
+        Picasso.get().load(restaurante.getImagen()).into(holder.imagen);
 
     }
 

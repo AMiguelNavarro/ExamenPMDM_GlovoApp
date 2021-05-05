@@ -8,24 +8,10 @@ import java.util.ArrayList;
 
 public class Valoracion {
 
-    private static final String NOMBRE_RESTAURANTE = "nombre";
-    private static final String PUNTUACION_MEDIA = "puntuacion";
-    private static final String IMAGEN = "imagen";
-
-    private String nombre, imagen;
+    private int idValoracion;
     private int puntuacion;
-
-
-
-
-    /* GETTERS Y SETTERS */
-    public String getNombre() {
-        return nombre;
-    }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
+    private Restaurante restaurante;
+    private Usuario usuario;
 
     public int getPuntuacion() {
         return puntuacion;
@@ -35,37 +21,27 @@ public class Valoracion {
         this.puntuacion = puntuacion;
     }
 
-    public String getImagen() {
-        return imagen;
+    public int getIdValoracion() {
+        return idValoracion;
     }
 
-    public void setImagen(String imagen) {
-        this.imagen = imagen;
+    public void setIdValoracion(int idValoracion) {
+        this.idValoracion = idValoracion;
     }
 
-
-
-    public static ArrayList<Valoracion> getArrayListFromJSON(JSONArray listaValoraciones) {
-        ArrayList<Valoracion> lstValoraciones = null;
-        try {
-            if (listaValoraciones != null && listaValoraciones.length() > 0) {
-                lstValoraciones = new ArrayList<Valoracion>();
-            }
-
-            for (int i = 0; i < listaValoraciones.length(); i++) {
-                JSONObject json_data = listaValoraciones.getJSONObject(i);
-                Valoracion valoracion = new Valoracion();
-
-                valoracion.setNombre(json_data.getString(NOMBRE_RESTAURANTE));
-                valoracion.setImagen(json_data.getString(IMAGEN));
-                valoracion.setPuntuacion(json_data.getInt(PUNTUACION_MEDIA));
-
-                lstValoraciones.add(valoracion);
-            }
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-        return lstValoraciones;
+    public Restaurante getRestaurante() {
+        return restaurante;
     }
 
+    public void setRestaurante(Restaurante restaurante) {
+        this.restaurante = restaurante;
+    }
+
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
+    }
 }

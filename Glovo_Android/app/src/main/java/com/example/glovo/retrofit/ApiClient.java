@@ -3,8 +3,10 @@ package com.example.glovo.retrofit;
 import android.content.Context;
 
 import com.example.glovo.BuildConfig;
+import com.example.glovo.beans.Categoria;
 import com.example.glovo.beans.Restaurante;
 import com.example.glovo.beans.Usuario;
+import com.example.glovo.beans.Valoracion;
 
 import java.util.List;
 
@@ -41,6 +43,16 @@ public class ApiClient {
     public Call<List<Restaurante>> getTop10() {
         RestaurantesApiRetrofit service = retrofit.create(RestaurantesApiRetrofit.class);
         return service.getTop10();
+    }
+
+    public Call<List<Valoracion>> getValoraciones() {
+        ValoracionesApiRetrofit service = retrofit.create(ValoracionesApiRetrofit.class);
+        return service.getValoraciones();
+    }
+
+    public Call<List<Categoria>> getCategorias() {
+        CategoriasApiRetrofit service = retrofit.create(CategoriasApiRetrofit.class);
+        return  service.getCategorias();
     }
 
 }

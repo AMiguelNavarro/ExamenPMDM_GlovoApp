@@ -1,11 +1,13 @@
 package com.example.glovo.listadoValoraciones.vista;
 
-import androidx.appcompat.app.AppCompatActivity;
+import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+
+import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
-import android.os.Bundle;
-import android.widget.Toast;
 
 import com.example.glovo.R;
 import com.example.glovo.adapters.ValoracionesAdapter;
@@ -15,43 +17,44 @@ import com.example.glovo.listadoValoraciones.presenter.ListadoValoracionesPresen
 
 import java.util.ArrayList;
 
-public class ListadoValoraciones extends AppCompatActivity implements ListadoValoracionesContrato.Vista {
+public class FragmentValoraciones extends Fragment implements ListadoValoracionesContrato.Vista {
 
     private ListadoValoracionesPresenter presenter;
     private RecyclerView recycler;
     private RecyclerView.LayoutManager layoutManager;
 
-
-    // SQL saca nombre y puntuación media: select restaurantes.nombre, AVG(valoraciones.puntuacion) as puntuacion, restaurantes.imagen from valoraciones INNER JOIN restaurantes on restaurantes.idRestaurante = valoraciones.idRestaurante GROUP BY restaurantes.nombre
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        // Inflate the layout for this fragment
+        View vista = inflater.inflate(R.layout.fragment_listado_valoraciones, container, false);
+        initComponents(vista);
 
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.valoraciones_listado_recycler);
-
+        // Instanciar al presenter
         presenter = new ListadoValoracionesPresenter(this);
-        presenter.getValoraciones();
+        presenter.getValoraciones(getContext());
 
+        return vista;
     }
 
 
+    private void initComponents(View vista) {
+        recycler = vista.findViewById(R.id.recycler_valoraciones);
+    }
+
     @Override
     public void listadoCorrecto(ArrayList<Valoracion> listaValoraciones) {
-
-        recycler = findViewById(R.id.recyclerValoraciones);
         recycler.setHasFixedSize(true);
 
-        layoutManager = new LinearLayoutManager(this);
+        layoutManager = new LinearLayoutManager(getContext());
         recycler.setLayoutManager(layoutManager);
 
         ValoracionesAdapter adapter = new ValoracionesAdapter(listaValoraciones);
         recycler.setAdapter(adapter);
-
     }
 
     @Override
     public void listadoError(String error) {
-        Toast.makeText(this, error, Toast.LENGTH_LONG).show();
+        System.out.println(error);
     }
-
 }
