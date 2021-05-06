@@ -4,4 +4,8 @@
     <string name="activity_login_et_texto_contrasena">Contraseña</string>
     <string name="activity_login_vista_text_boton_inicio_sesion">Iniciar Sesión</string>
     <string name="home_activity_usuario">USUARIO:</string>
+    <string name="cardView_content_description_imagen">Imagen del restaurante</string>
+    <string name="cardView_text_view_nombre_restaurante">Nombre del restaurante</string>
+    <string name="cardView_textView_descripcion_restaurante">Descripción del restaurante</string>
+    <string name="cardView_button_ver_menus">MENÚS</string>
 </resources>

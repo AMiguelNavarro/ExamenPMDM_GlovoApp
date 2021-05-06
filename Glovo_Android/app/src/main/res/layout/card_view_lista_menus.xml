@@ -39,13 +39,13 @@
             android:paddingLeft="5dp"
             android:text="TextView"
             android:textAlignment="viewStart"
-            android:textColor="@color/white" />
+            android:textColor="@color/black" />
 
         <TextView
             android:id="@+id/segundoMenu"
             android:textAlignment="viewStart"
             android:paddingLeft="5dp"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             android:layout_marginTop="5dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -55,7 +55,7 @@
             android:id="@+id/postreMenu"
             android:textAlignment="viewStart"
             android:paddingLeft="5dp"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             android:layout_marginTop="5dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -65,7 +65,7 @@
             android:id="@+id/bebidaMenu"
             android:textAlignment="viewStart"
             android:paddingLeft="5dp"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             android:layout_marginTop="5dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -74,7 +74,7 @@
         <TextView
             android:id="@+id/precioMenu"
             android:textAlignment="center"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             android:layout_marginTop="5dp"
             android:textSize="17sp"
             android:padding="8dp"

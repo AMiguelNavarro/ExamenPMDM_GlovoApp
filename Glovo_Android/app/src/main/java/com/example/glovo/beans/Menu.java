@@ -8,16 +8,23 @@ import java.util.ArrayList;
 
 public class Menu {
 
-    private static final String PRIMERO = "primero";
-    private static final String SEGUNDO = "segundo";
-    private static final String POSTRE = "postre";
-    private static final String BEBIDA = "bebida";
-    private static final String NOMBRE_MENU = "nombreMenu";
-    private static final String IMAGEN_MENU = "imagenMenu";
-    private static final String PRECIO = "precio";
-
+    private int idMenu;
     private double precio;
-    private String primero, segundo, postre, bebida, nombreMenu, imagenMenu;
+    private String primero;
+    private String segundo;
+    private String postre;
+    private String nombreMenu;
+    private String imagenMenu;
+    private String bebida;
+    private Restaurante restaurante;
+
+    public int getIdMenu() {
+        return idMenu;
+    }
+
+    public void setIdMenu(int idMenu) {
+        this.idMenu = idMenu;
+    }
 
     public double getPrecio() {
         return precio;
@@ -51,14 +58,6 @@ public class Menu {
         this.postre = postre;
     }
 
-    public String getBebida() {
-        return bebida;
-    }
-
-    public void setBebida(String bebida) {
-        this.bebida = bebida;
-    }
-
     public String getNombreMenu() {
         return nombreMenu;
     }
@@ -75,38 +74,19 @@ public class Menu {
         this.imagenMenu = imagenMenu;
     }
 
+    public String getBebida() {
+        return bebida;
+    }
 
+    public void setBebida(String bebida) {
+        this.bebida = bebida;
+    }
 
-    public static ArrayList<Menu> getArrayListFromJSON(JSONArray listaMenus) {
+    public Restaurante getRestaurante() {
+        return restaurante;
+    }
 
-        ArrayList<Menu> lstMenus = null;
-
-        try {
-
-            if (listaMenus != null && listaMenus.length() > 0) {
-                lstMenus = new ArrayList<>();
-            }
-
-            for (int i = 0; i < listaMenus.length(); i++) {
-                JSONObject json_data = listaMenus.getJSONObject(i);
-                Menu menu = new Menu();
-
-                menu.setPrimero(json_data.getString(PRIMERO));
-                menu.setSegundo(json_data.getString(SEGUNDO));
-                menu.setPostre(json_data.getString(POSTRE));
-                menu.setBebida(json_data.getString(BEBIDA));
-                menu.setNombreMenu(json_data.getString(NOMBRE_MENU));
-                menu.setImagenMenu(json_data.getString(IMAGEN_MENU));
-                menu.setPrecio(json_data.getDouble(PRECIO));
-
-                lstMenus.add(menu);
-            }
-
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-
-        return lstMenus;
-
+    public void setRestaurante(Restaurante restaurante) {
+        this.restaurante = restaurante;
     }
 }

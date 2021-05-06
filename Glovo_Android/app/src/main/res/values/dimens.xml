@@ -2,4 +2,7 @@
 <resources>
     <dimen name="home_activity_padding_usuario">15dp</dimen>
     <dimen name="home_activity_tamaño_texto_usuario">16sp</dimen>
+    <dimen name="card_view_general_margin">8dp</dimen>
+    <dimen name="cardView_padding_general">16dp</dimen>
+    <dimen name="cardView_margin_boton">15dp</dimen>
 </resources>

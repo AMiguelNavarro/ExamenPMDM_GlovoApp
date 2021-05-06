@@ -23,7 +23,7 @@ public class FichaDescriptivaVista extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.ficha_descriptiva_vista);
+        setContentView(R.layout.layout_ficha_descriptiva_restaurante);
 
         iniciarComponentes();
 

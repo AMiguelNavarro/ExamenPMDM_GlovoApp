@@ -30,9 +30,10 @@ public class ListadoMenusVista extends AppCompatActivity implements ListadoMenus
 
         Intent recogerDatos = getIntent();
         idRestaurante = recogerDatos.getIntExtra("idRestaurante", 0);
+        // El id llega correcto
 
         presenter = new ListadoMenusPresenter(this);
-        presenter.getMenus(idRestaurante);
+        presenter.getMenus(this, idRestaurante);
 
     }
 

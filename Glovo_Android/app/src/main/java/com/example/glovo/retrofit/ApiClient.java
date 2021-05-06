@@ -4,6 +4,7 @@ import android.content.Context;
 
 import com.example.glovo.BuildConfig;
 import com.example.glovo.beans.Categoria;
+import com.example.glovo.beans.Menu;
 import com.example.glovo.beans.Restaurante;
 import com.example.glovo.beans.Usuario;
 import com.example.glovo.beans.Valoracion;
@@ -53,6 +54,11 @@ public class ApiClient {
     public Call<List<Categoria>> getCategorias() {
         CategoriasApiRetrofit service = retrofit.create(CategoriasApiRetrofit.class);
         return  service.getCategorias();
+    }
+
+    public Call<List<Menu>> getMenus(int idRestaurante) {
+        MenusApiRetrofit service = retrofit.create(MenusApiRetrofit.class);
+        return service.getMenus(idRestaurante);
     }
 
 }
