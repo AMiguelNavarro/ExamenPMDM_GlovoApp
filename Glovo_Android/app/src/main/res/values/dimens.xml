@@ -5,4 +5,5 @@
     <dimen name="card_view_general_margin">8dp</dimen>
     <dimen name="cardView_padding_general">16dp</dimen>
     <dimen name="cardView_margin_boton">15dp</dimen>
+    <dimen name="activity_anadir_restaurante_general_padding">25dp</dimen>
 </resources>

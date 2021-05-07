@@ -12,6 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Glovo"
         android:usesCleartextTraffic="true">
+        <activity android:name=".anadirRestaurante.AnadirRestaurante"></activity>
         <activity android:name=".SplashScreen.SplashScreenVista">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -19,7 +20,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".loginInicio.vista.LoginVista"></activity>
+        <activity android:name=".loginInicio.vista.LoginVista" />
         <activity android:name=".listadoMenus.vista.ListadoMenusVista" />
         <activity android:name=".FichaDescriptiva.FichaDescriptivaVista" />
         <activity android:name=".listadoResturantesFiltroCategoria.vista.LstRestaurantesCategoria" />

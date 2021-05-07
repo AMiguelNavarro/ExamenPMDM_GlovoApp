@@ -12,7 +12,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.glovo.R;
 import com.example.glovo.adapters.RestaurantesAdapter;
 import com.example.glovo.beans.Restaurante;
-import com.example.glovo.listadoRestaurantes.presenter.ListadoRestaurantesPresenter;
 import com.example.glovo.listadoTop10.interfaces.ListadoTop10Contrato;
 import com.example.glovo.listadoTop10.presenter.ListadoTop10Presenter;
 

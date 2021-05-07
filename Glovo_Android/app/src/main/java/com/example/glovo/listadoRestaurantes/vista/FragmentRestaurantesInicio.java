@@ -1,5 +1,6 @@
 package com.example.glovo.listadoRestaurantes.vista;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,9 +12,11 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.glovo.R;
 import com.example.glovo.adapters.RestaurantesAdapter;
+import com.example.glovo.anadirRestaurante.AnadirRestaurante;
 import com.example.glovo.beans.Restaurante;
 import com.example.glovo.listadoRestaurantes.interfaces.ListadoRestaurantesContrato;
 import com.example.glovo.listadoRestaurantes.presenter.ListadoRestaurantesPresenter;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 
 import java.util.ArrayList;
@@ -23,6 +26,7 @@ public class FragmentRestaurantesInicio extends Fragment implements ListadoResta
     private RecyclerView recycler;
     private RecyclerView.LayoutManager layoutManager;
     private ListadoRestaurantesPresenter listadoRestaurantesPresenter;
+    private FloatingActionButton botonAnadirRestaurante;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -35,12 +39,24 @@ public class FragmentRestaurantesInicio extends Fragment implements ListadoResta
         listadoRestaurantesPresenter = new ListadoRestaurantesPresenter(this);
         listadoRestaurantesPresenter.getRestaurantes(getContext());
 
+        funcionalidadBotonAnadirRestaurante();
+
         return vista;
+    }
+
+    private void funcionalidadBotonAnadirRestaurante() {
+        botonAnadirRestaurante.setOnClickListener(v -> {
+            Intent navegar = new Intent(v.getContext(), AnadirRestaurante.class);
+            v.getContext().startActivity(navegar);
+        });
     }
 
     private void initComponents(View vista) {
         recycler = vista.findViewById(R.id.recycler_inicio);
+        botonAnadirRestaurante = vista.findViewById(R.id.button_anadir_restaurante);
     }
+
+
 
     @Override
     public void listadoCorrecto(ArrayList<Restaurante> listaRestaurantes) {

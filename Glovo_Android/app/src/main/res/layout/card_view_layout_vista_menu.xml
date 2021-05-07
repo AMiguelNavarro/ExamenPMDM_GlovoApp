@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_margin="@dimen/card_view_general_margin"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/imagenMenu"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:layout_alignParentTop="true"/>
+
+            <TextView
+                android:id="@+id/nombreMenu"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/glovoGreen"
+                android:textSize="20sp"
+                android:padding="4dp"
+                android:text="TextView"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                android:layout_below="@id/imagenMenu"/>
+
+            <TextView
+                android:id="@+id/primeroMenu"
+                android:layout_below="@id/nombreMenu"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:paddingLeft="5dp"
+                android:text="TextView"
+                android:textAlignment="viewStart"
+                android:textColor="@color/black" />
+
+            <TextView
+                android:id="@+id/segundoMenu"
+                android:layout_below="@id/primeroMenu"
+                android:textAlignment="viewStart"
+                android:paddingLeft="5dp"
+                android:textColor="@color/black"
+                android:layout_marginTop="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="TextView" />
+
+            <TextView
+                android:id="@+id/postreMenu"
+                android:layout_below="@id/segundoMenu"
+                android:textAlignment="viewStart"
+                android:paddingLeft="5dp"
+                android:textColor="@color/black"
+                android:layout_marginTop="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="TextView" />
+
+            <TextView
+                android:id="@+id/bebidaMenu"
+                android:layout_below="@id/postreMenu"
+                android:textAlignment="viewStart"
+                android:paddingLeft="5dp"
+                android:textColor="@color/black"
+                android:layout_marginTop="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="TextView" />
+
+            <TextView
+                android:id="@+id/precioMenu"
+                android:layout_below="@id/bebidaMenu"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:layout_marginTop="5dp"
+                android:textSize="17sp"
+                android:padding="8dp"
+                android:textStyle="italic"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="TextView" />
+
+            <View
+                android:id="@+id/dividerVertical"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginBottom="8dp"
+                android:layout_below="@id/precioMenu"
+                android:background="?android:attr/dividerVertical"/>
+
+
+            <TextView
+                android:id="@+id/tvcantidad_texto"
+                android:layout_below="@id/dividerVertical"
+                android:textAlignment="textStart"
+                android:textColor="@color/black"
+                android:layout_marginTop="5dp"
+                android:textSize="17sp"
+                android:padding="8dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/cardView_menu_texto_cantidad" />
+
+            <TextView
+                android:id="@+id/tvcantidad_contador"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/dividerVertical"
+                android:layout_marginStart="-6dp"
+                android:layout_marginTop="5dp"
+                android:layout_toEndOf="@+id/tvcantidad_texto"
+                android:padding="8dp"
+                android:textColor="@color/black"
+                android:textSize="17sp" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/button_restar"
+                android:layout_width="40dp"
+                android:layout_height="wrap_content"
+                app:icon="@drawable/icono_restar"
+                android:layout_below="@id/dividerVertical"
+                android:layout_toStartOf="@id/button_sumar"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/button_sumar"
+                android:layout_width="40dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                app:icon="@drawable/icono_suma"
+                android:textColor="@color/colorPrimary"
+                android:layout_below="@id/dividerVertical"
+                android:backgroundTint="@color/colorAccent"
+                android:layout_marginRight="10dp"
+                android:layout_marginLeft="3dp"/>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/button2"
+                android:layout_below="@id/tvcantidad_texto"
+                android:layout_alignParentEnd="true"
+                android:layout_width="match_parent"
+                android:layout_height="38dp"
+                android:background="@color/glovoGreen"
+                android:textStyle="bold"
+                android:textColor="@color/white"
+                android:layout_marginTop="10dp"
+                android:text="@string/cardView_menu_texto_boton_comprar" />
+
+        </RelativeLayout>
+
+
+    </com.google.android.material.card.MaterialCardView>
+
+</LinearLayout>

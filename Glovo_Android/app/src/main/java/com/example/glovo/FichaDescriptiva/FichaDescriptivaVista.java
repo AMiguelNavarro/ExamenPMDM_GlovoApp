@@ -7,7 +7,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.glovo.R;
 import com.example.glovo.listadoMenus.vista.ListadoMenusVista;
@@ -23,7 +22,7 @@ public class FichaDescriptivaVista extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.layout_ficha_descriptiva_restaurante);
+        setContentView(R.layout.card_view_layout_ficha_descriptiva_restaurante);
 
         iniciarComponentes();
 

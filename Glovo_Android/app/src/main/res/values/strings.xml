@@ -8,4 +8,9 @@
     <string name="cardView_text_view_nombre_restaurante">Nombre del restaurante</string>
     <string name="cardView_textView_descripcion_restaurante">Descripción del restaurante</string>
     <string name="cardView_button_ver_menus">MENÚS</string>
+    <string name="cardView_menu_texto_boton_comprar">Comprar</string>
+    <string name="cardView_menu_texto_cantidad">Cant:</string>
+    <string name="activity_anadir_restaurante_texto_nombre_restaurante">Nombre Restaurante</string>
+    <string name="activity_anadir_restaurante_texto_descripcion">Descripcion</string>
+    <string name="activity_anadir_restaurante_texto_boton">AÑADIR</string>
 </resources>

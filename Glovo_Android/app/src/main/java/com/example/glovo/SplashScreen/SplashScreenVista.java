@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 
+import com.example.glovo.HomeActivity;
 import com.example.glovo.R;
 import com.example.glovo.loginInicio.vista.LoginVista;
 
