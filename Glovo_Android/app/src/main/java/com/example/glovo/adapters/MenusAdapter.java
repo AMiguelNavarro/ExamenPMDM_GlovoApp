@@ -4,6 +4,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -12,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.glovo.R;
 import com.example.glovo.beans.Menu;
 import com.google.android.material.button.MaterialButton;
+import com.google.android.material.snackbar.Snackbar;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -67,6 +69,17 @@ public class MenusAdapter extends RecyclerView.Adapter<MenusAdapter.MenusViewHol
             }
         });
 
+        holder.botonComprar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int cantidad = Integer.parseInt(String.valueOf(holder.cantidadContador.getText()));
+                double precio = menu.getPrecio();
+                double resultado = cantidad * precio;
+                Snackbar snackbar = Snackbar.make(holder.layout, "Compra realizada: " + cantidad + " unidades TOTAL -> " + resultado + " €", Snackbar.LENGTH_LONG);
+                snackbar.show();
+            }
+        });
+
 
     }
 
@@ -81,7 +94,8 @@ public class MenusAdapter extends RecyclerView.Adapter<MenusAdapter.MenusViewHol
         public ImageView imagenMenu;
         public TextView nombreMenu, precioMenu, primero, segundo, postre, bebida, cantidadTexto,
         cantidadContador;
-        public MaterialButton botonSumar, botonRestar;
+        public MaterialButton botonSumar, botonRestar, botonComprar;
+        public LinearLayout layout;
 
         public MenusViewHolder(@NonNull View v) {
             super(v);
@@ -96,7 +110,8 @@ public class MenusAdapter extends RecyclerView.Adapter<MenusAdapter.MenusViewHol
             cantidadContador = v.findViewById(R.id.tvcantidad_contador);
             botonSumar = v.findViewById(R.id.button_sumar);
             botonRestar = v.findViewById(R.id.button_restar);
-
+            botonComprar = v.findViewById(R.id.button_comprar);
+            layout = v.findViewById(R.id.layout_cardView_menu);
         }
     }
 
