@@ -13,6 +13,7 @@ import com.example.glovo.beans.Usuario;
 import com.example.glovo.HomeActivity;
 import com.example.glovo.loginInicio.interfaces.LoginInterfazContrato;
 import com.example.glovo.loginInicio.presenter.LoginPresenter;
+import com.google.android.material.button.MaterialButton;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.textfield.TextInputEditText;
 
@@ -21,7 +22,7 @@ public class LoginVista extends AppCompatActivity implements LoginInterfazContra
     private TextInputEditText usuario;
     private TextInputEditText contrasena;
     private LinearLayout layout;
-    private Button btInicioSesion;
+    private MaterialButton btInicioSesion;
     private LoginPresenter presenter;
 
     @Override

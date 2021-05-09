@@ -12,7 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Glovo"
         android:usesCleartextTraffic="true">
-        <activity android:name=".anadirRestaurante.AnadirRestaurante"></activity>
+        <activity android:name=".anadirRestaurante.AnadirRestauranteVista"></activity>
         <activity android:name=".SplashScreen.SplashScreenVista">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -23,7 +23,6 @@
         <activity android:name=".loginInicio.vista.LoginVista" />
         <activity android:name=".listadoMenus.vista.ListadoMenusVista" />
         <activity android:name=".FichaDescriptiva.FichaDescriptivaVista" />
-        <activity android:name=".listadoResturantesFiltroCategoria.vista.LstRestaurantesCategoria" />
         <activity android:name=".HomeActivity"> <!-- com.example.com.svalero.glovo.MainActivity -->
         </activity>
     </application>

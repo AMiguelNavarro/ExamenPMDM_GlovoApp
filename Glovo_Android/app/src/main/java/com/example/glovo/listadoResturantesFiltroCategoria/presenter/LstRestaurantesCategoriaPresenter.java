@@ -1,5 +1,7 @@
 package com.example.glovo.listadoResturantesFiltroCategoria.presenter;
 
+import android.content.Context;
+
 import com.example.glovo.beans.Restaurante;
 import com.example.glovo.listadoResturantesFiltroCategoria.interfaces.LstRestaurantesCategoriaContrato;
 import com.example.glovo.listadoResturantesFiltroCategoria.modelo.LstRestaurantesCategoriaModelo;
@@ -25,9 +27,9 @@ public class LstRestaurantesCategoriaPresenter implements LstRestaurantesCategor
 
 
     @Override
-    public void getRestaurantesCategoria(String categoria) {
+    public void getRestaurantesCategoria(Context context, String categoria) {
 
-        modeloCategoria.getRestaurantesCategoriaWS(new LstRestaurantesCategoriaContrato.Modelo.OnLstRestaurantesListenerCategoria() {
+        modeloCategoria.getRestaurantesCategoriaWS(context, new LstRestaurantesCategoriaContrato.Modelo.OnLstRestaurantesListenerCategoria() {
             @Override
             public void onCorrecto(ArrayList<Restaurante> listaRestaurantes) {
                 vistaCategoriaContrato.listadoCorrecto(listaRestaurantes);

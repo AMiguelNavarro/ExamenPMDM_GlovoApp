@@ -13,7 +13,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.glovo.FichaDescriptiva.FichaDescriptivaVista;
 import com.example.glovo.R;
-import com.example.glovo.anadirRestaurante.AnadirRestaurante;
 import com.example.glovo.beans.Restaurante;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.squareup.picasso.Picasso;

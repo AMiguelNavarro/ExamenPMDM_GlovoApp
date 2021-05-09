@@ -40,12 +40,24 @@
             android:textSize="@dimen/home_activity_tamaño_texto_usuario"
             android:layout_toEndOf="@+id/tvFiltro"/>
 
-        <Spinner
-            android:id="@+id/spinnerFiltro"
-            android:layout_alignParentEnd="true"
-            android:layout_width="wrap_content"
+        <com.google.android.material.textfield.TextInputLayout
+
+            style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu"
+            android:layout_width="150dp"
             android:layout_height="wrap_content"
-            android:padding="13dp" />
+            android:layout_alignParentEnd="true"
+            android:hint="Categoria"
+            android:orientation="horizontal"
+            >
+
+            <AutoCompleteTextView
+                android:id="@+id/autoComplete_textView_dropdownMenu"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="none"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
+
     </RelativeLayout>
 
 <!--    Esto será un Linear layout y dentro se crea el fragment -->
@@ -70,29 +82,6 @@
         android:layout_height="wrap_content"
         app:menu="@menu/bottom_navigation_menu"/>
 
-<!--    <LinearLayout-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="match_parent"-->
-<!--        android:orientation="horizontal">-->
-
-<!--        <Button-->
-<!--            android:id="@+id/btnVentas"-->
-<!--            android:layout_width="194dp"-->
-<!--            android:layout_height="match_parent"-->
-<!--            android:background="@color/glovoGreen"-->
-<!--            android:layout_marginRight="20dp"-->
-<!--            android:onClick="getTop10"-->
-<!--            android:text="Top 10 Ventas" />-->
-
-<!--        <Button-->
-<!--            android:id="@+id/btnPuntuacion"-->
-<!--            android:layout_width="204dp"-->
-<!--            android:layout_height="match_parent"-->
-<!--            android:background="@color/glovoGreen"-->
-<!--            android:onClick="getValoraciones"-->
-<!--            android:text="VER VALORACIONES" />-->
-
-<!--    </LinearLayout>-->
 
 
 </RelativeLayout>

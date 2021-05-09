@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/anadir_restaurante_layout"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -7,7 +8,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/colorAccent"
     android:padding="@dimen/activity_anadir_restaurante_general_padding"
-    tools:context=".anadirRestaurante.AnadirRestaurante">
+    tools:context=".anadirRestaurante.AnadirRestauranteVista">
 
     <TextView
         android:id="@+id/tvTitulo"
@@ -95,6 +96,8 @@
         android:id="@+id/boton_anadir"
         android:layout_centerHorizontal="true"
         android:textAlignment="center"
+        android:textStyle="bold"
+        android:textSize="20sp"
         android:text="@string/activity_anadir_restaurante_texto_boton"
         android:layout_below="@+id/radioGroup"
         android:layout_width="wrap_content"

@@ -1,5 +1,7 @@
 package com.example.glovo.listadoResturantesFiltroCategoria.interfaces;
 
+import android.content.Context;
+
 import com.example.glovo.beans.Restaurante;
 import com.example.glovo.listadoRestaurantes.interfaces.ListadoRestaurantesContrato;
 
@@ -15,12 +17,12 @@ public interface LstRestaurantesCategoriaContrato {
     }
 
      interface Presenter {
-        void getRestaurantesCategoria(String categoria);
+        void getRestaurantesCategoria(Context context, String categoria);
     }
 
      interface Modelo {
 
-         void getRestaurantesCategoriaWS(OnLstRestaurantesListenerCategoria onLstRestaurantesListenerCategoria, String categoria);
+         void getRestaurantesCategoriaWS(Context context, OnLstRestaurantesListenerCategoria onLstRestaurantesListenerCategoria, String categoria);
 
         /**
          * Programación reactiva, le indica el camino de regreso

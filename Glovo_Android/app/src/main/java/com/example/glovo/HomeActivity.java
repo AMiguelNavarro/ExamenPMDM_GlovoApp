@@ -11,18 +11,17 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
+import android.widget.AutoCompleteTextView;
 import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.glovo.beans.Categoria;
 import com.example.glovo.beans.Usuario;
 import com.example.glovo.listadoCategorias.ListadoCategoriasContrato;
 import com.example.glovo.listadoCategorias.ListadoCategoriasPresenter;
 import com.example.glovo.listadoRestaurantes.vista.FragmentRestaurantesInicio;
-import com.example.glovo.listadoResturantesFiltroCategoria.vista.LstRestaurantesCategoria;
+import com.example.glovo.listadoResturantesFiltroCategoria.vista.FragmentRestaurantesFiltroCategoria;
 import com.example.glovo.listadoTop10.vista.FragmentRestaurantesTop10;
 import com.example.glovo.listadoValoraciones.vista.FragmentValoraciones;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -40,6 +39,7 @@ public class HomeActivity extends AppCompatActivity implements ListadoCategorias
     private BottomNavigationView bottomNavigationView;
     private FragmentManager fragmentManager;
     private ListadoCategoriasPresenter presenter;
+    private AutoCompleteTextView autoCompleteTextViewDropdownMenu;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,14 +65,13 @@ public class HomeActivity extends AppCompatActivity implements ListadoCategorias
 
         showFragmentInicio();
 
-
     }
 
     private void initComponents() {
         tvNombreUsuario = findViewById(R.id.tv_nombre_usuario);
         layout = findViewById(R.id.layout_listado_restaurantes_vista);
         bottomNavigationView = findViewById(R.id.bottom_navigation_inicio);
-        spinner = findViewById(R.id.spinnerFiltro);
+        autoCompleteTextViewDropdownMenu = findViewById(R.id.autoComplete_textView_dropdownMenu);
     }
 
     private void iniciarBottomNavigationView() {
@@ -126,6 +125,14 @@ public class HomeActivity extends AppCompatActivity implements ListadoCategorias
         transaction.commit();
     }
 
+    private void showFragmentFiltroCategoria(String categoria) {
+        FragmentTransaction transaction = fragmentManager.beginTransaction();
+        FragmentRestaurantesFiltroCategoria fragmentRestaurantesFiltroCategoria = FragmentRestaurantesFiltroCategoria.newInstance(categoria);
+        transaction.replace(R.id.linear_layout_fragments, fragmentRestaurantesFiltroCategoria);
+        transaction.addToBackStack(null); // Para volver al fragment anterior
+        transaction.commit();
+    }
+
     @Override
     public void listadoCategoriasCorrecto(ArrayList<Categoria> listaCategorias) {
         cargarSpinner(listaCategorias);
@@ -146,43 +153,18 @@ public class HomeActivity extends AppCompatActivity implements ListadoCategorias
             opcionesSpinner[i] = categoria.getCategoria();
         }
 
-        ArrayAdapter arrayAdapter = new ArrayAdapter(this, android.R.layout.simple_spinner_item, opcionesSpinner);
-        spinner.setAdapter(arrayAdapter);
-        spinner.setSelected(false);
-        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+        ArrayAdapter arrayAdapter = new ArrayAdapter(this, R.layout.dropdown_menu_item_layout, opcionesSpinner);
+        autoCompleteTextViewDropdownMenu.setAdapter(arrayAdapter);
+        autoCompleteTextViewDropdownMenu.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-
-                Intent navegar;
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 String categoria = parent.getItemAtPosition(position).toString();
-                crearSnackbar(categoria);
-
-//                if (categoria == " ") {
-//                    return;
-//                }
-//
-//                if (categoria == "VER TODAS") {
-//                    navegar = new Intent(getBaseContext(), HomeActivity.class);
-//                    startActivity(navegar);
-//                    return;
-//                }
-//
-//                navegar = new Intent(getBaseContext(), LstRestaurantesCategoria.class);
-//                navegar.putExtra("categoria", categoria);
-//
-//                startActivity(navegar);
-
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-                Toast.makeText(getBaseContext(), "No has seleccionado nada", Toast.LENGTH_LONG).show();
+                showFragmentFiltroCategoria(categoria);
             }
         });
 
 
     }
-
 
 
     private void crearSnackbar(String mensaje) {

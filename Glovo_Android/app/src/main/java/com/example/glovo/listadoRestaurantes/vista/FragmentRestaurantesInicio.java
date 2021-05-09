@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AutoCompleteTextView;
 
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -12,12 +13,11 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.glovo.R;
 import com.example.glovo.adapters.RestaurantesAdapter;
-import com.example.glovo.anadirRestaurante.AnadirRestaurante;
+import com.example.glovo.anadirRestaurante.AnadirRestauranteVista;
 import com.example.glovo.beans.Restaurante;
 import com.example.glovo.listadoRestaurantes.interfaces.ListadoRestaurantesContrato;
 import com.example.glovo.listadoRestaurantes.presenter.ListadoRestaurantesPresenter;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
 
 import java.util.ArrayList;
 
@@ -46,7 +46,7 @@ public class FragmentRestaurantesInicio extends Fragment implements ListadoResta
 
     private void funcionalidadBotonAnadirRestaurante() {
         botonAnadirRestaurante.setOnClickListener(v -> {
-            Intent navegar = new Intent(v.getContext(), AnadirRestaurante.class);
+            Intent navegar = new Intent(v.getContext(), AnadirRestauranteVista.class);
             v.getContext().startActivity(navegar);
         });
     }
