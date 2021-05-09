@@ -13,4 +13,5 @@
     <string name="activity_anadir_restaurante_texto_nombre_restaurante">Nombre Restaurante</string>
     <string name="activity_anadir_restaurante_texto_descripcion">Descripcion</string>
     <string name="activity_anadir_restaurante_texto_boton">AÑADIR</string>
+    <string name="boton_error_texto">Reintentar</string>
 </resources>

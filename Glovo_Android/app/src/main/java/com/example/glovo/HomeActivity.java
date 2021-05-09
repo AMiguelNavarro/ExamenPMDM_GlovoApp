@@ -12,6 +12,9 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
+import android.widget.Button;
+import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -32,7 +35,6 @@ import java.util.ArrayList;
 public class HomeActivity extends AppCompatActivity implements ListadoCategoriasContrato.Vista {
 
     private RelativeLayout layout;
-    private Spinner spinner;
     private String[] opcionesSpinner;
     private TextView tvNombreUsuario;
     private Usuario usuario = new Usuario();
@@ -40,6 +42,7 @@ public class HomeActivity extends AppCompatActivity implements ListadoCategorias
     private FragmentManager fragmentManager;
     private ListadoCategoriasPresenter presenter;
     private AutoCompleteTextView autoCompleteTextViewDropdownMenu;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

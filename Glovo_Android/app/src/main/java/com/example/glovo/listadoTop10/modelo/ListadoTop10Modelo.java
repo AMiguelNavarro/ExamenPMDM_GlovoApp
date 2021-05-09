@@ -33,7 +33,7 @@ public class ListadoTop10Modelo implements ListadoTop10Contrato.Modelo {
             @Override
             public void onFailure(Call<List<Restaurante>> call, Throwable t) {
                 t.printStackTrace();
-                listener.onError(t.getLocalizedMessage());
+                listener.onError("Error al mostrar el Top10");
             }
         });
     }

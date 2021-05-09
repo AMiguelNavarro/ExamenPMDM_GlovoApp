@@ -34,7 +34,7 @@ public class LstRestaurantesCategoriaModelo implements LstRestaurantesCategoriaC
 
             @Override
             public void onFailure(Call<List<Restaurante>> call, Throwable t) {
-                onLstRestaurantesListenerCategoria.onError(t.getLocalizedMessage());
+                onLstRestaurantesListenerCategoria.onError("Error al mostrar la categoria: " + categoria);
             }
         });
     }

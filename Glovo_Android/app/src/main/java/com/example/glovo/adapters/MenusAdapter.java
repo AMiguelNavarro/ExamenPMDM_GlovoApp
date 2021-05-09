@@ -37,7 +37,7 @@ public class MenusAdapter extends RecyclerView.Adapter<MenusAdapter.MenusViewHol
         Menu menu = listaMenus.get(position);
 
         holder.nombreMenu.setText(menu.getNombreMenu());
-        holder.precioMenu.setText(menu.getPrecio() + " €");
+        holder.precioMenu.setText(menu.getPrecio() + " €/unidad");
         holder.primero.setText("● " + menu.getPrimero());
         holder.segundo.setText("● " + menu.getSegundo());
         holder.postre.setText("● " + menu.getPostre());

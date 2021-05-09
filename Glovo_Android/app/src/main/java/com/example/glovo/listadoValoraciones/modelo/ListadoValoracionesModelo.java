@@ -36,7 +36,7 @@ public class ListadoValoracionesModelo implements ListadoValoracionesContrato.Mo
             @Override
             public void onFailure(Call<List<Valoracion>> call, Throwable t) {
                 t.printStackTrace();
-                listener.onError(t.getLocalizedMessage());
+                listener.onError("Error al mostrar las valoraciones");
             }
         });
 

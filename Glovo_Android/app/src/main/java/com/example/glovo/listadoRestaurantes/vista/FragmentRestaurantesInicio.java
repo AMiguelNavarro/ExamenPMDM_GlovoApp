@@ -5,7 +5,10 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AutoCompleteTextView;
+import android.widget.Button;
+import android.widget.LinearLayout;
+import android.widget.ProgressBar;
+import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -27,6 +30,10 @@ public class FragmentRestaurantesInicio extends Fragment implements ListadoResta
     private RecyclerView.LayoutManager layoutManager;
     private ListadoRestaurantesPresenter listadoRestaurantesPresenter;
     private FloatingActionButton botonAnadirRestaurante;
+    private ProgressBar pbProgreso;
+    private LinearLayout layoutError;
+    private TextView tvError;
+    private Button btError;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -41,6 +48,17 @@ public class FragmentRestaurantesInicio extends Fragment implements ListadoResta
 
         funcionalidadBotonAnadirRestaurante();
 
+        pbProgreso.setVisibility(View.VISIBLE);
+
+        btError.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                listadoRestaurantesPresenter.getRestaurantes(getContext());
+                pbProgreso.setVisibility(View.VISIBLE);
+                layoutError.setVisibility(View.GONE);
+            }
+        });
+
         return vista;
     }
 
@@ -54,13 +72,30 @@ public class FragmentRestaurantesInicio extends Fragment implements ListadoResta
     private void initComponents(View vista) {
         recycler = vista.findViewById(R.id.recycler_inicio);
         botonAnadirRestaurante = vista.findViewById(R.id.button_anadir_restaurante);
+        pbProgreso = vista.findViewById(R.id.fragment_restaurantes_general_progressBar);
+        layoutError = vista.findViewById(R.id.fragment_restaurantes_general_linearLayout_error);
+        tvError = vista.findViewById(R.id.fragment_restaurantes_general_tv_error);
+        btError = vista.findViewById(R.id.fragment_restaurantes_general_button_retry);
     }
 
+
+    private void ocultarError(){
+        pbProgreso.setVisibility(View.GONE);
+        recycler.setVisibility(View.VISIBLE);
+        layoutError.setVisibility(View.GONE);
+    }
+
+    private void mostrarError(String error){
+        pbProgreso.setVisibility(View.GONE);
+        recycler.setVisibility(View.GONE);
+        layoutError.setVisibility(View.VISIBLE);
+        tvError.setText(error);
+    }
 
 
     @Override
     public void listadoCorrecto(ArrayList<Restaurante> listaRestaurantes) {
-        // coger el recycler y fijar tamaño
+        ocultarError();
 
         recycler.setHasFixedSize(true);
 
@@ -73,6 +108,7 @@ public class FragmentRestaurantesInicio extends Fragment implements ListadoResta
 
     @Override
     public void listadoError(String error) {
+        mostrarError(error);
         System.out.println(error);
     }
 

@@ -12,4 +12,34 @@
         android:padding="3dp"
         android:scrollbars="vertical" />
 
+    <ProgressBar
+        android:id="@+id/fragment_restaurantes_valoraciones_progressBar"
+        android:layout_width="50dp"
+        android:background="@color/black"
+        android:layout_height="50dp"
+        android:layout_centerInParent="true"/>
+
+    <LinearLayout
+        android:id="@+id/fragment_restaurantes_valoraciones_linearLayout_error"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:visibility="gone"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/fragment_restaurantes_valoraciones_tv_error"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"/>
+
+        <Button
+            android:id="@+id/fragment_restaurantes_valoraciones_button_retry"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="@string/boton_error_texto"/>
+
+    </LinearLayout>
+
 </RelativeLayout>

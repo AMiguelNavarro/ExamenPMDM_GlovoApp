@@ -40,8 +40,9 @@ public class AnadirRestauranteVista extends AppCompatActivity implements AnadirR
 
                 if (nombre.isEmpty() || descripcion.isEmpty()) {
                     crearSnackbar("Debes rellenar los campos de nombre y descripción");
-                    nombreRestaurante.setError("Error de usuario");
-                    descripcionRestaurante.setError("Error de contraseña");
+                    nombreRestaurante.setError("Error en el nombre del restaurante");
+                    descripcionRestaurante.setError("Error en la descripción");
+                    return;
                 }
 
                 RestauranteDTO restauranteDTO = new RestauranteDTO();
@@ -65,34 +66,6 @@ public class AnadirRestauranteVista extends AppCompatActivity implements AnadirR
 
 
     }
-
-//    private void funcionalidadBotonAnadir() {
-//
-//        String nombre = String.valueOf(nombreRestaurante.getText());
-//        String descripcion = String.valueOf(descripcionRestaurante.getText());
-//
-//        if (nombre.isEmpty() || descripcion.isEmpty()) {
-//            crearSnackbar("Debes rellenar los campos de nombre y descripción");
-//            this.nombreRestaurante.setError("Error de usuario");
-//            this.descripcionRestaurante.setError("Error de contraseña");
-//        }
-//
-//        RestauranteDTO restauranteDTO = new RestauranteDTO();
-//        restauranteDTO.setNombre(nombre);
-//        restauranteDTO.setDescripcion(descripcion);
-//
-//        radioButtonGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-//            @Override
-//            public void onCheckedChanged(RadioGroup group, int checkedId) {
-//                RadioButton rb = findViewById(checkedId);
-//                String categoria = rb.getText().toString();
-//                restauranteDTO.setNombreCategoria(categoria);
-//            }
-//        });
-//
-//        presenter = new AnadirRestaurantePresenter(this);
-//        presenter.addRestaurante(this, restauranteDTO);
-//    }
 
     private void crearSnackbar(String mensaje) {
         Snackbar snackbar = Snackbar.make(layout, mensaje, Snackbar.LENGTH_LONG);

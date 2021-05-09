@@ -4,6 +4,10 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.LinearLayout;
+import android.widget.ProgressBar;
+import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -22,6 +26,10 @@ public class FragmentRestaurantesTop10 extends Fragment implements ListadoTop10C
     private ListadoTop10Presenter presenter;
     private RecyclerView recycler;
     private RecyclerView.LayoutManager layoutManager;
+    private ProgressBar pbProgreso;
+    private LinearLayout layoutError;
+    private TextView tvError;
+    private Button btError;
 
 
     @Override
@@ -35,16 +43,45 @@ public class FragmentRestaurantesTop10 extends Fragment implements ListadoTop10C
         presenter = new ListadoTop10Presenter(this);
         presenter.getTop10(getContext());
 
+        pbProgreso.setVisibility(View.VISIBLE);
+
+        btError.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                presenter.getTop10(getContext());
+                pbProgreso.setVisibility(View.VISIBLE);
+                layoutError.setVisibility(View.GONE);
+            }
+        });
+
         return vista;
+    }
+
+    private void ocultarError(){
+        pbProgreso.setVisibility(View.GONE);
+        recycler.setVisibility(View.VISIBLE);
+        layoutError.setVisibility(View.GONE);
+    }
+
+    private void mostrarError(String error){
+        pbProgreso.setVisibility(View.GONE);
+        recycler.setVisibility(View.GONE);
+        layoutError.setVisibility(View.VISIBLE);
+        tvError.setText(error);
     }
 
 
     private void initComponents(View vista) {
+        pbProgreso = vista.findViewById(R.id.fragment_restaurantes_top10_progressBar);
+        layoutError = vista.findViewById(R.id.fragment_restaurantes_top10_linearLayout_error);
+        tvError = vista.findViewById(R.id.fragment_restaurantes_top10_tv_error);
+        btError = vista.findViewById(R.id.fragment_restaurantes_top10_button_retry);
         recycler = vista.findViewById(R.id.recycler_top10);
     }
 
     @Override
     public void listadoCorrecto(ArrayList<Restaurante> listaRestaurantesTop10) {
+        ocultarError();
 
         recycler.setHasFixedSize(true);
 
@@ -58,6 +95,7 @@ public class FragmentRestaurantesTop10 extends Fragment implements ListadoTop10C
 
     @Override
     public void listadoError(String error) {
+        mostrarError(error);
         System.out.println(error);
     }
 }
