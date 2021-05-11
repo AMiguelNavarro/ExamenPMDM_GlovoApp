@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.AlphaAnimation;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -66,6 +67,13 @@ public class RestaurantesAdapter extends RecyclerView.Adapter<RestaurantesAdapte
         holder.descripcion.setText(restaurante.getDescripcion());
         holder.numVentas.setText("Num ventas: " + restaurante.getNumVentas());
         Picasso.get().load(restaurante.getImagen()).into(holder.imagen);
+
+        // Animación imágenes
+        AlphaAnimation animation1 = new AlphaAnimation(0.2f, 1.0f);
+        animation1.setDuration(1100);
+        animation1.setStartOffset(500);
+        animation1.setFillAfter(true);
+        holder.imagen.startAnimation(animation1);
 
         /**
          * Coge los datos del elemento pulsado y los manda a la vista de la ficha descriptiva
